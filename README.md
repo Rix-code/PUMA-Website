@@ -17,7 +17,11 @@ Tech Stack:
 
 TODO:
 
--Make Page for public interface
+-Make Page for Main 
+
+-Make Page for All Events
+
+-Make Page for Events Summary
 
 -Make Page for Admin (Updates)
  
