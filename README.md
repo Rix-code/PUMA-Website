@@ -11,7 +11,7 @@ Wireframing:
 
 Tech Stack: 
 
-=>Javascript for FrontEnd (Framework: 
+=>Javascript for FrontEnd (Framework: VueJS)
 
 =>PHP for BackEnd
 
