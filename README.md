@@ -15,6 +15,9 @@ Tech Stack:
 
 =>PHP for BackEnd
 
+Image Required:
+=>Foto PUMA ALL SIGNING IN
+
 TODO:
 
 -Make Page for Main 
