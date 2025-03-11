@@ -13,7 +13,7 @@ function setHovering(value) {
 
 <template>
   <div class="relative flex flex-col overflow-hidden">
-    <FallingStarsBg class="absolute inset-0 -z-10" :color="isDark ? '#FFF' : '#555'" />
+    <FallingStarsBg class="absolute inset-0 -z-10" :color="isDark ? '#555' : '#555'" />
 
     <ContainerScroll>
       <template #title>
@@ -28,7 +28,7 @@ function setHovering(value) {
         <Lens :hovering="hovering" @hover-update="setHovering">
           <img
             src="../../public/puma-bag.JPG"
-            class="object-cover object-left-top h-full pb-10 mx-auto rounded-2xl"
+            class="object-cover object-left-top h-full mx-auto rounded-2xl"
             alt="hero"
             height="720"
             width="1400"

@@ -12,8 +12,7 @@ const events = [
       '../public/puma-bag.JPG',
       '../public/sample1.jpg',
       '../public/sample2.jpg'
-    ],
-    color: '#3B82F6' 
+    ]
   },
   {
     title: 'UNITICS',
@@ -23,8 +22,7 @@ const events = [
       '../public/puma-bag.JPG',
       '../public/sample3.jpg',
       '../public/sample4.jpg'
-    ],
-    color: '#0EA5E9'
+    ]
   },
   {
     title: 'INFORUUM',
@@ -34,8 +32,7 @@ const events = [
       '../public/puma-bag.JPG',
       '../public/sample5.jpg',
       '../public/sample6.jpg'
-    ],
-    color: '#0284C7' 
+    ]
   },
   {
     title: 'TEMU ALUMNI',
@@ -45,8 +42,7 @@ const events = [
       '../public/puma-bag.JPG',
       '../public/sample7.jpg',
       '../public/sample8.jpg'
-    ],
-    color: '#2563EB' 
+    ]
   }
 ]
 
@@ -55,7 +51,7 @@ const modalVisible = ref(false)
 const selectedEvent = ref(events[0])
 const isLoaded = ref(false)
 const patterns = ref([])
-const blueCircles = ref([])
+const backgroundCircles = ref([])
 
 const handleSlideChange = (index: number) => {
   currentSlide.value = index
@@ -86,7 +82,7 @@ const generatePatterns = () => {
   patterns.value = newPatterns
 }
 
-const generateBlueCircles = () => {
+const generateBackgroundCircles = () => {
   const circles = []
   for (let i = 0; i < 6; i++) {
     circles.push({
@@ -94,14 +90,14 @@ const generateBlueCircles = () => {
       y: Math.random() * 100,
       size: Math.random() * 200 + 100,
       color: [
-        '#3B82F6', '#60A5FA', '#93C5FD',
-        '#0EA5E9', '#38BDF8', '#0284C7'
+        '#000000', '#1A1A1A', '#333333',
+        '#4D4D4D', '#666666', '#808080'
       ][i],
       opacity: Math.random() * 0.08 + 0.02,
       blur: Math.random() * 50 + 30
     })
   }
-  blueCircles.value = circles
+  backgroundCircles.value = circles
 }
 
 onMounted(() => {
@@ -109,15 +105,15 @@ onMounted(() => {
     isLoaded.value = true
   }, 300)
   generatePatterns()
-  generateBlueCircles()
+  generateBackgroundCircles()
 })
 </script>
 
 <template>
   <section id="events" class="relative py-24 overflow-hidden bg-white">
-    <!-- Blue circle accents instead of gradient -->
+    <!-- Black circle accents instead of blue -->
     <div class="absolute inset-0 overflow-hidden">
-      <div v-for="(circle, index) in blueCircles" :key="`circle-${index}`" class="absolute rounded-full" :style="{
+      <div v-for="(circle, index) in backgroundCircles" :key="`circle-${index}`" class="absolute rounded-full" :style="{
         width: `${circle.size}px`,
         height: `${circle.size}px`,
         left: `${circle.x}%`,
@@ -130,10 +126,10 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Subtle background patterns from divisions page -->
+    <!-- Subtle background patterns -->
     <div class="absolute inset-0 overflow-hidden">
       <div v-for="(pattern, index) in patterns" :key="index"
-        class="absolute transition-all duration-1000 ease-out border-2 border-blue-100 rounded-full" :style="{
+        class="absolute transition-all duration-1000 ease-out border-2 border-gray-100 rounded-full" :style="{
           width: `${pattern.size}px`,
           height: `${pattern.size}px`,
           left: `${pattern.x}%`,
@@ -147,9 +143,9 @@ onMounted(() => {
     <div class="container relative z-10 px-4 mx-auto">
       <div class="mb-16 text-center">
         <h2 class="mb-4 text-5xl font-bold text-gray-800">
-          Event <span class="text-blue-500">Recap</span>
+          Event <span class="text-black">Recap</span>
         </h2>
-        <div class="w-24 h-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-300 to-blue-500"></div>
+        <div class="w-24 h-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-gray-300 to-black"></div>
         <p class="max-w-2xl mx-auto text-lg font-light text-gray-600">
           Discover the innovative journey of our tech community through our signature events
         </p>
@@ -166,7 +162,7 @@ onMounted(() => {
                   'scale-110': currentSlide === index,
                   'scale-90 opacity-90 hover:opacity-100 hover:scale-95': currentSlide !== index
                 }" :style="{
-                  boxShadow: currentSlide === index ? `0 15px 30px ${event.color}30, 0 0 0 1px ${event.color}20` : '0 10px 20px rgba(0, 0, 0, 0.05)',
+                  boxShadow: currentSlide === index ? '0 15px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.1)' : '0 10px 20px rgba(0, 0, 0, 0.05)',
                   transform: isLoaded ? 'translateY(0)' : 'translateY(40px)',
                   opacity: isLoaded ? '1' : '0',
                   transitionDelay: `${index * 0.1}s`
@@ -179,14 +175,14 @@ onMounted(() => {
                     class="absolute inset-0 transition-opacity duration-500 bg-gradient-to-t from-black/40 to-transparent">
                   </div>
 
-                  <div class="absolute bottom-0 left-0 w-full h-1" :style="{ background: event.color }"></div>
+                  <div class="absolute bottom-0 left-0 w-full h-1 bg-black"></div>
 
                   <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <div class="flex items-end justify-between">
                       <div>
                         <h3 class="mb-1 text-2xl font-bold tracking-tight">{{ event.title }}</h3>
                         <div class="flex items-center">
-                          <div class="w-2 h-2 mr-2 rounded-full" :style="{ background: event.color }"></div>
+                          <div class="w-2 h-2 mr-2 bg-black rounded-full"></div>
                           <p class="text-sm font-medium text-white/90">{{ event.date }}</p>
                         </div>
                       </div>
@@ -197,11 +193,7 @@ onMounted(() => {
                 <div class="p-6 bg-white">
                   <p class="mb-5 text-sm leading-relaxed text-gray-600">{{ event.description }}</p>
                   <button @click="openModal(event)"
-                    class="relative w-full px-6 py-3 overflow-hidden text-sm font-medium tracking-wide text-white transition-all duration-300 rounded-full"
-                    :style="{
-                      background: event.color,
-                      boxShadow: `0 4px 12px ${event.color}30`
-                    }">
+                    class="relative w-full px-6 py-3 overflow-hidden text-sm font-medium tracking-wide text-white transition-all duration-300 bg-black rounded-full hover:bg-gray-800">
                     <span class="relative z-10">Explore Event</span>
                     <div class="absolute inset-0 transition-opacity duration-300 bg-white opacity-0 hover:opacity-30">
                     </div>
@@ -224,9 +216,9 @@ onMounted(() => {
       <div
         class="relative w-full max-w-4xl overflow-hidden transition-all duration-500 transform bg-white shadow-2xl rounded-xl"
         :class="{ 'scale-100 opacity-100': modalVisible, 'scale-95 opacity-0': !modalVisible }"
-        :style="{ boxShadow: `0 10px 40px ${selectedEvent.color}30, 0 0 0 1px ${selectedEvent.color}10` }">
+        :style="{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05)' }">
 
-        <div class="absolute top-0 left-0 right-0 h-1" :style="{ background: selectedEvent.color }"></div>
+        <div class="absolute top-0 left-0 right-0 h-1 bg-black"></div>
 
         <button @click="closeModal"
           class="absolute z-10 flex items-center justify-center w-10 h-10 transition-all duration-300 rounded-full bg-gray-200/80 hover:bg-gray-300/90 top-4 right-4">
@@ -239,8 +231,7 @@ onMounted(() => {
 
         <div class="p-8">
           <div class="mb-8">
-            <div class="inline-flex items-center px-3 py-1 mb-3 text-xs font-medium rounded-full"
-              :style="{ background: `${selectedEvent.color}10`, color: selectedEvent.color }">
+            <div class="inline-flex items-center px-3 py-1 mb-3 text-xs font-medium text-black rounded-full bg-black/10">
               {{ selectedEvent.date }}
             </div>
             <h3 class="mb-3 text-3xl font-bold text-gray-800">{{ selectedEvent.title }}</h3>
@@ -292,11 +283,11 @@ onMounted(() => {
 .gallery-carousel :deep(.carousel__prev),
 .gallery-carousel :deep(.carousel__next) {
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  color: #3B82F6;
+  color: #000000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
@@ -305,7 +296,7 @@ onMounted(() => {
 .event-carousel :deep(.carousel__next:hover),
 .gallery-carousel :deep(.carousel__prev:hover),
 .gallery-carousel :deep(.carousel__next:hover) {
-  background: #3B82F6;
+  background: #000000;
   color: white;
   transform: scale(1.05);
 }

@@ -25,7 +25,7 @@ const props = withDefaults(
   {
     color: '#FFF',
     count: 50,
-  },
+  }
 );
 
 const starsCanvas = ref<HTMLCanvasElement | null>(null);

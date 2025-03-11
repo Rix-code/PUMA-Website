@@ -68,7 +68,4 @@ const translateY = computed(() => {
 });
 
 
-watchEffect(() => {
-  console.log("scrollY:", scrollY.value, "top:", top.value, "bottom:", bottom.value, "scrollYProgress:", scrollYProgress.value);
-});
 </script>
