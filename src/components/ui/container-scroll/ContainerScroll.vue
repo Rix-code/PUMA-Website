@@ -62,7 +62,11 @@ const scale = computed(() => {
   const [start, end] = scaleDimensions.value;
   return start + (end - start) * scrollYProgress.value;
 });
-const translateY = computed(() => -100 * scrollYProgress.value);
+
+const translateY = computed(() => {
+  return -100 * scrollYProgress.value + (scrollYProgress.value === 0 ? 90 : 0);
+});
+
 
 watchEffect(() => {
   console.log("scrollY:", scrollY.value, "top:", top.value, "bottom:", bottom.value, "scrollYProgress:", scrollYProgress.value);
