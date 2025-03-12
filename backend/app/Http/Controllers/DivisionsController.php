@@ -13,7 +13,7 @@ class DivisionsController extends Controller
      */
     public function index()
     {
-        //
+        return Divisions::all();
     }
 
     /**
@@ -37,7 +37,7 @@ class DivisionsController extends Controller
      */
     public function show(Divisions $divisions)
     {
-        //
+        return $divisions;
     }
 
     /**

@@ -38,7 +38,6 @@ class MembersSeeder extends Seeder
 
         $data = array_map(fn($member) => [
             'name' => $member[0],
-            'position' => '-',
             'batch' => '-',
             'email' => strtolower(str_replace(' ', '', $member[0])) . '@example.com',
             'phone' => NULL,

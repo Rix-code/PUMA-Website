@@ -13,7 +13,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        return News::all();
+        // return "view('news', [
+        //     "news" => News::all()
+        // ]);"
     }
 
     /**
@@ -37,7 +40,10 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        return view('newsDetail', [
+            "title" => "Single Post",
+            "news" => $news
+        ]);
     }
 
     /**

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Members;
+use App\Models\Categories;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class News extends Model
 {
@@ -14,5 +16,10 @@ class News extends Model
     
     public function author() {
         return $this->belongsTo(Members::class, 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Categories::class, 'categories_id');
     }
 }

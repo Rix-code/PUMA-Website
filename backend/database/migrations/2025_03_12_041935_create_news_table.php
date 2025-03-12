@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('description');
             $table->text('content');
             $table->string('img_url');
-            $table->foreignId('member_id')->constrained('members')->onDelete('cascade');;
+            $table->foreignId('categories_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('member_id')->constrained('members')->onDelete('cascade');
             $table->timestamps();
         });
     }
