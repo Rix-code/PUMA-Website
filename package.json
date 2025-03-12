@@ -15,6 +15,7 @@
     "@vueuse/motion": "^3.0.3",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
+    "axios": "^1.8.3",
     "flyonui": "^1.3.0",
     "framer-motion": "^12.4.11",
     "gsap": "^3.12.7",
