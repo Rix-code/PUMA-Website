@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
 import Navbar from '../Navbar.vue';
+import Footer from '../Footer.vue'
+
 
 const isScrolled = ref(false)
 const activeEvent = ref(null)
@@ -79,7 +81,7 @@ const timelineIcon = '<circle cx="10" cy="10" r="6" /><path d="M10 4v6M10 10l3 3
                     </div>
                 </h1>
                 <p class="max-w-2xl mx-auto mt-6 text-lg text-white/70">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati ullam aut modi fugit placeat porro adipisci optio recusandae alias. Corrupti modi quis voluptatibus doloremque consequatur, in molestias qui ducimus officia!
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex saepe repudiandae a cumque, in minus deserunt quam laboriosam ab blanditiis rerum minima quo, repellendus harum, sit tempore placeat cupiditate rem.
                 </p>
             </div>
 
@@ -140,6 +142,7 @@ const timelineIcon = '<circle cx="10" cy="10" r="6" /><path d="M10 4v6M10 10l3 3
             </div>
         </main>
     </div>
+    <Footer />
 </template>
 
 <style scoped>

@@ -6,7 +6,13 @@ const isScrolled = ref(false)
 const isMenuOpen = ref(false)
 const route = useRoute()
 
-// Check if current route is home page
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Events', path: '/timeline' },
+  { name: 'Divisions', path: '#' },
+  { name: 'Contact', path: '/contact' }
+]
+
 const isHomePage = computed(() => {
   return route.path === '/'
 })
@@ -27,13 +33,10 @@ const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
 
-// Computed property for navbar background
 const navbarBackground = computed(() => {
   if (!isHomePage.value) {
-    // Always black background on non-home pages
     return 'bg-black/80 backdrop-blur-lg border-b border-white/10'
   } else {
-    // On home page, transparent to black based on scroll
     return isScrolled.value 
       ? 'bg-black/80 backdrop-blur-lg border-b border-white/10' 
       : 'bg-transparent'
@@ -55,13 +58,10 @@ const navbarBackground = computed(() => {
 
         <div class="hidden md:flex">
           <div class="relative flex space-x-3">
-            <router-link v-for="(item, index) in [
-              { name: 'Home', path: '/' },
-              { name: 'Vision & Mission', path: '#' },
-              { name: 'Events', path: '/timeline' },
-              { name: 'Divisions', path: '#' },
-              { name: 'Contact', path: '/contact' }
-            ]" :key="item.name" :to="item.path"
+            <router-link 
+              v-for="(item, index) in navItems" 
+              :key="item.name" 
+              :to="item.path"
               class="px-4 py-2 font-mono text-sm font-medium text-white uppercase transition-all duration-300 border-0 rounded-full group"
               :class="[
                 isScrolled || !isHomePage ? 'hover:text-black hover:bg-white' : 'hover:bg-white/10'
@@ -74,7 +74,6 @@ const navbarBackground = computed(() => {
                 {{ item.name }}
               </div>
             </router-link>
-
           </div>
         </div>
 
@@ -103,17 +102,20 @@ const navbarBackground = computed(() => {
     ]">
       <div class="container px-4 mx-auto bg-black/80 backdrop-blur-lg rounded-b-2xl">
         <div class="py-4 space-y-2">
-          <a v-for="(item, index) in ['Home', 'Vision & Mission', 'Events', 'Divisions', 'Contact']" :key="item"
-            :href="'#' + item.toLowerCase().replace(/ & /g, '-')"
-            class="block px-4 py-2 mx-2 font-mono text-sm text-white transition-all duration-300 group hover:bg-white hover:text-black rounded-xl">
+          <router-link 
+            v-for="(item, index) in navItems" 
+            :key="item.name" 
+            :to="item.path"
+            class="block px-4 py-2 mx-2 font-mono text-sm text-white transition-all duration-300 group hover:bg-white hover:text-black rounded-xl"
+            @click="isMenuOpen = false">
             <div class="flex items-center">
               <span
                 class="px-2 py-1 mr-2 text-xs text-white transition-colors duration-300 rounded-full bg-white/10 group-hover:bg-black/20 group-hover:text-white">
                 {{ (index + 1).toString().padStart(2, '0') }}
               </span>
-              {{ item }}
+              {{ item.name }}
             </div>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -121,7 +123,6 @@ const navbarBackground = computed(() => {
 </template>
 
 <style scoped>
-
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);

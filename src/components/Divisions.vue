@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 
-// Removed color property from division data
 const divisions = [
   {
     name: 'BOD',
@@ -62,7 +61,6 @@ const divisions = [
 const activeIndex = ref(2)
 let animating = ref(false)
 
-// Enhanced background gradient circles with more prominent look
 const bgGradientCircles = ref([
   { size: 500, x: -10, y: -10, opacity: 0.07 },
   { size: 400, x: 75, y: 20, opacity: 0.05 },
@@ -132,13 +130,22 @@ const visibleDivisions = computed(() => {
     }
   })
 })
+
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+})
 </script>
 
 <template>
   <section id="divisions" class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-gray-50">
-    <!-- Enhanced gradient circles in the background -->
     <div class="absolute inset-0 overflow-hidden">
-      <!-- Large gradient circles -->
       <div v-for="(circle, index) in bgGradientCircles" :key="`gradient-circle-${index}`"
         class="absolute rounded-full" 
         :style="{
@@ -152,7 +159,6 @@ const visibleDivisions = computed(() => {
         }">
       </div>
 
-      <!-- Small pattern circles -->
       <div v-for="(pattern, index) in patterns" :key="`pattern-${index}`"
         class="absolute transition-all duration-1000 ease-out border-2 border-gray-200 rounded-full" 
         :style="{
@@ -178,7 +184,7 @@ const visibleDivisions = computed(() => {
       </div>
 
       <div class="flex flex-col max-w-6xl gap-8 mx-auto lg:flex-row">
-        <div class="relative w-full lg:w-1/3 h-[400px] flex items-center">
+        <div class="relative w-full lg:w-1/3 h-[400px] hidden md:flex items-center">
           <div v-for="(division, i) in visibleDivisions" :key="`nav-${i}`" v-show="division.visible"
             class="absolute w-3/4 px-4 py-2 text-center transition-all duration-500 ease-out cursor-pointer" 
             :style="{
@@ -202,7 +208,7 @@ const visibleDivisions = computed(() => {
             </div>
           </div>
 
-          <div class="absolute left-0 right-0 flex justify-center gap-4 -bottom-8">
+          <div class="absolute left-0 right-0 flex justify-center gap-4 -bottom-8 md:flex">
             <button @click="changeIndexSmoothly(-1)"
               class="flex items-center justify-center w-10 h-10 transition-colors bg-white border border-gray-200 rounded-full shadow-md hover:bg-gray-50">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24"
@@ -224,6 +230,12 @@ const visibleDivisions = computed(() => {
           style="box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.05)">
           <div class="absolute top-0 left-0 w-full h-1 bg-black"></div>
 
+          <div class="flex items-center justify-center p-2 md:hidden bg-black/5">
+            <span class="font-semibold text-black">
+              {{ visibleDivisions[2].name }} - {{ visibleDivisions[2].title }}
+            </span>
+          </div>
+
           <div class="relative overflow-hidden h-3/5">
             <img :src="visibleDivisions[2].image" :alt="visibleDivisions[2].name"
               class="object-cover w-full h-full transition-transform duration-700 ease-out hover:scale-105" />
@@ -243,17 +255,36 @@ const visibleDivisions = computed(() => {
               {{ visibleDivisions[2].description }}
             </p>
 
-            <button class="relative px-6 py-3 mt-6 overflow-hidden bg-white border border-black rounded-full group">
-              <span class="absolute inset-0 w-0 transition-all duration-500 ease-out bg-black group-hover:w-full"></span>
-              <span class="relative z-10 flex items-center justify-center gap-2 font-medium text-black transition-colors group-hover:text-white">
-                See Member
-                <svg xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </span>
-            </button>
+            <div class="flex items-center justify-between mt-6">
+              <button class="relative px-6 py-3 overflow-hidden bg-white border border-black rounded-full group">
+                <span class="absolute inset-0 w-0 transition-all duration-500 ease-out bg-black group-hover:w-full"></span>
+                <span class="relative z-10 flex items-center justify-center gap-2 font-medium text-black transition-colors group-hover:text-white">
+                  See Member
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              </button>
+
+              <div class="flex justify-center gap-4 md:hidden">
+                <button @click="changeIndexSmoothly(-1)"
+                  class="flex items-center justify-center w-10 h-10 transition-colors bg-white border border-gray-200 rounded-full shadow-md hover:bg-gray-50">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button @click="changeIndexSmoothly(1)"
+                  class="flex items-center justify-center w-10 h-10 transition-colors bg-white border border-gray-200 rounded-full shadow-md hover:bg-gray-50">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

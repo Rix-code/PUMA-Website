@@ -1,10 +1,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Navbar from '../Navbar.vue';
+import Footer from '../Footer.vue';
 
 export default defineComponent({
     components: {
         Navbar,
+        Footer,
     },
 });
 </script>
@@ -58,4 +60,5 @@ export default defineComponent({
         <div class="absolute w-32 h-1 bg-black bottom-20 right-8 opacity-20"></div>
         <div class="absolute w-16 h-1 bg-black bottom-24 right-12 opacity-10"></div>
     </section>
+    <Footer />
 </template>

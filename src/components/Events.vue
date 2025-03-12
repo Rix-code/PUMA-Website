@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import 'aos/dist/aos.css'
+import AOS from 'aos'
+
+const windowWidth = ref(0)
 
 const events = [
   {
@@ -45,6 +49,16 @@ const events = [
     ]
   }
 ]
+
+const itemsToShow = computed(() => {
+  if (windowWidth.value < 640) {
+    return 1 
+  } else if (windowWidth.value < 1024) {
+    return 2 
+  } else {
+    return 2.5 
+  }
+})
 
 const currentSlide = ref(0)
 const modalVisible = ref(false)
@@ -100,18 +114,32 @@ const generateBackgroundCircles = () => {
   backgroundCircles.value = circles
 }
 
+const updateWindowWidth = () => {
+  windowWidth.value = window.innerWidth
+}
+
 onMounted(() => {
+  windowWidth.value = window.innerWidth
+  
+  window.addEventListener('resize', updateWindowWidth)
+  
   setTimeout(() => {
     isLoaded.value = true
   }, 300)
+  
   generatePatterns()
   generateBackgroundCircles()
+  
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+  })
 })
 </script>
 
 <template>
   <section id="events" class="relative py-24 overflow-hidden bg-white">
-    <!-- Black circle accents instead of blue -->
     <div class="absolute inset-0 overflow-hidden">
       <div v-for="(circle, index) in backgroundCircles" :key="`circle-${index}`" class="absolute rounded-full" :style="{
         width: `${circle.size}px`,
@@ -126,7 +154,6 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Subtle background patterns -->
     <div class="absolute inset-0 overflow-hidden">
       <div v-for="(pattern, index) in patterns" :key="index"
         class="absolute transition-all duration-1000 ease-out border-2 border-gray-100 rounded-full" :style="{
@@ -142,17 +169,17 @@ onMounted(() => {
 
     <div class="container relative z-10 px-4 mx-auto">
       <div class="mb-16 text-center">
-        <h2 class="mb-4 text-5xl font-bold text-gray-800">
+        <h2 data-aos="fade-up" class="mb-4 text-3xl text-5xl font-bold text-gray-800 sm:text-5xl">
           Event <span class="text-black">Recap</span>
         </h2>
         <div class="w-24 h-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-gray-300 to-black"></div>
-        <p class="max-w-2xl mx-auto text-lg font-light text-gray-600">
+        <p class="max-w-2xl px-4 mx-auto text-lg font-light text-gray-600">
           Discover the innovative journey of our tech community through our signature events
         </p>
       </div>
 
-      <div class="mx-auto max-w-8xl">
-        <Carousel :items-to-show="2.5" :wrap-around="true" :transition="600" @slideChange="handleSlideChange"
+      <div data-aos="fade-up" class="mx-auto max-w-8xl">
+        <Carousel :items-to-show="itemsToShow" :wrap-around="true" :transition="600" @slideChange="handleSlideChange"
           class="event-carousel">
           <Slide v-for="(event, index) in events" :key="index" class="carousel__item">
             <div class="h-full mx-4 perspective">
@@ -214,7 +241,7 @@ onMounted(() => {
       class="fixed inset-0 z-50 flex items-center justify-center transition-all duration-300 bg-black/30 backdrop-blur-sm"
       @click.self="closeModal">
       <div
-        class="relative w-full max-w-4xl overflow-hidden transition-all duration-500 transform bg-white shadow-2xl rounded-xl"
+        class="relative w-full max-w-4xl mx-4 overflow-hidden transition-all duration-500 transform bg-white shadow-2xl rounded-xl"
         :class="{ 'scale-100 opacity-100': modalVisible, 'scale-95 opacity-0': !modalVisible }"
         :style="{ boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05)' }">
 
@@ -229,12 +256,12 @@ onMounted(() => {
           </svg>
         </button>
 
-        <div class="p-8">
-          <div class="mb-8">
+        <div class="p-4 sm:p-8">
+          <div class="mb-6 sm:mb-8">
             <div class="inline-flex items-center px-3 py-1 mb-3 text-xs font-medium text-black rounded-full bg-black/10">
               {{ selectedEvent.date }}
             </div>
-            <h3 class="mb-3 text-3xl font-bold text-gray-800">{{ selectedEvent.title }}</h3>
+            <h3 class="mb-3 text-2xl font-bold text-gray-800 sm:text-3xl">{{ selectedEvent.title }}</h3>
             <p class="text-gray-600">{{ selectedEvent.description }}</p>
           </div>
 
@@ -243,7 +270,7 @@ onMounted(() => {
               <Slide v-for="(image, i) in selectedEvent.images" :key="i" class="carousel__item">
                 <div class="relative overflow-hidden rounded-xl">
                   <img :src="image" :alt="`${selectedEvent.title} Image ${i + 1}`"
-                    class="object-cover w-full transition-transform duration-700 rounded-lg hover:scale-105 h-96" />
+                    class="object-cover w-full h-64 transition-transform duration-700 rounded-lg hover:scale-105 sm:h-96" />
 
                   <div class="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-black/40 to-transparent">
                   </div>
@@ -275,7 +302,7 @@ onMounted(() => {
 }
 
 .event-carousel :deep(.carousel__slide) {
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .event-carousel :deep(.carousel__prev),
@@ -285,11 +312,25 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   color: #000000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .event-carousel :deep(.carousel__prev),
+  .event-carousel :deep(.carousel__next),
+  .gallery-carousel :deep(.carousel__prev),
+  .gallery-carousel :deep(.carousel__next) {
+    width: 48px;
+    height: 48px;
+  }
+
+  .event-carousel :deep(.carousel__slide) {
+    padding: 1.5rem;
+  }
 }
 
 .event-carousel :deep(.carousel__prev:hover),
