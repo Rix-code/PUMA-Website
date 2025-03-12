@@ -13,7 +13,7 @@ const events = [
     date: '2025',
     description: 'The PUMA Informatics Regeneration is an event to recruit new members who are enthusiastic and committed to joining the organization.',
     images: [
-      '../public/puma-bag.JPG',
+      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
       '../public/sample1.jpg',
       '../public/sample2.jpg'
     ]
@@ -23,7 +23,7 @@ const events = [
     date: '2025',
     description: 'Unitics (Unity of Informatics) is organized to welcome new members to PUMA IT. The primary focus is to create an inclusive environment.',
     images: [
-      '../public/puma-bag.JPG',
+      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
       '../public/sample3.jpg',
       '../public/sample4.jpg'
     ]
@@ -33,7 +33,7 @@ const events = [
     date: '2025',
     description: 'Inforuum (Informatics Continuum) is a farewell event for PUMA IT members, allowing them to bid farewell and reminisce about shared moments.',
     images: [
-      '../public/puma-bag.JPG',
+      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
       '../public/sample5.jpg',
       '../public/sample6.jpg'
     ]
@@ -43,7 +43,7 @@ const events = [
     date: '2025',
     description: 'Temu Alumni is an event aimed at enhancing the relationship between students and alumni in the field of informatics through sharing sessions.',
     images: [
-      '../public/puma-bag.JPG',
+      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
       '../public/sample7.jpg',
       '../public/sample8.jpg'
     ]

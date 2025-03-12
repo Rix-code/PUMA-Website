@@ -94,7 +94,7 @@ const rotateText = () => {
                 <p class="mt-2 text-lg text-white/80 md:text-xl animate-fadeInUp animate-delay-300">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sequi quis ullam, dolorum fuga.
                 </p>
-                <a href="/cabinet"
+                <a href="#/cabinet"
                     class="inline-block px-8 py-3 mt-6 text-black transition-colors bg-white rounded-full hover:bg-gray-100 animate-fadeInUp animate-delay-400">
                     Discover More
                 </a>

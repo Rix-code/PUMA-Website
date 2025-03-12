@@ -30,55 +30,55 @@ const divisions: Division[] = [
   {
     name: 'BOD',
     title: 'Board of Directors',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'RNT',
     title: 'Research and Technology',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'HRD',
     title: 'Human Resources',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'ICM',
     title: 'Internal Communications',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'IR',
     title: 'Internal Relations',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'ER',
     title: 'External Relations',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'SAC',
     title: 'Student Academic & Competition',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'SPT',
     title: 'Student Passions & Talents',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   },
   {
     name: 'TECHNOPRENEUR',
     title: 'Technopreneur',
-    image: '../public/puma-bag.JPG',
+    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
     description: 'lorem'
   }
 ]
