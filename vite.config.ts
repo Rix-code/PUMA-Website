@@ -1,11 +1,12 @@
-import path from 'node:path'
+import path from 'node:path' 
 import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/PUMA-Website/' : '/', 
+  base: '/PUMA-Website/', 
+  assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.png', '**/*.svg'], 
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],
