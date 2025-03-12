@@ -7,10 +7,11 @@ const isMenuOpen = ref(false)
 const route = useRoute()
 
 const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'Events', path: '/timeline' },
-  { name: 'Divisions', path: '#' },
-  { name: 'Contact', path: '/contact' }
+  { name: 'Home', path: '/', showNumber: true },
+  { name: 'Events', path: '/timeline', showNumber: true },
+  { name: 'Divisions', path: '#', showNumber: true },
+  { name: 'Contact', path: '/contact', showNumber: true },
+  { name: 'Login', path: '/login', showNumber: false }
 ]
 
 const isHomePage = computed(() => {
@@ -62,12 +63,14 @@ const navbarBackground = computed(() => {
               v-for="(item, index) in navItems" 
               :key="item.name" 
               :to="item.path"
-              class="px-4 py-2 font-mono text-sm font-medium text-white uppercase transition-all duration-300 border-0 rounded-full group"
+              class="px-4 py-2 font-mono text-sm font-medium uppercase transition-all duration-300 border-0 rounded-full group"
               :class="[
-                isScrolled || !isHomePage ? 'hover:text-black hover:bg-white' : 'hover:bg-white/10'
+                item.name === 'Login' ? 'bg-white text-black hover:bg-white/90' : 'text-white',
+                item.name !== 'Login' && (isScrolled || !isHomePage) ? 'hover:text-black hover:bg-white' : 'hover:bg-white/10'
               ]">
               <div class="flex items-center">
                 <span
+                  v-if="item.showNumber"
                   class="mr-1 text-xs px-1.5 py-0.5 rounded-full bg-white/10 text-white group-hover:bg-black/20 group-hover:text-white transition-colors duration-300">
                   {{ (index + 1).toString().padStart(2, '0') }}
                 </span>
@@ -106,10 +109,12 @@ const navbarBackground = computed(() => {
             v-for="(item, index) in navItems" 
             :key="item.name" 
             :to="item.path"
-            class="block px-4 py-2 mx-2 font-mono text-sm text-white transition-all duration-300 group hover:bg-white hover:text-black rounded-xl"
+            class="block px-4 py-2 mx-2 font-mono text-sm transition-all duration-300 group hover:bg-white hover:text-black rounded-xl"
+            :class="{ 'bg-white text-black': item.name === 'Login', 'text-white': item.name !== 'Login' }"
             @click="isMenuOpen = false">
             <div class="flex items-center">
               <span
+                v-if="item.showNumber"
                 class="px-2 py-1 mr-2 text-xs text-white transition-colors duration-300 rounded-full bg-white/10 group-hover:bg-black/20 group-hover:text-white">
                 {{ (index + 1).toString().padStart(2, '0') }}
               </span>
