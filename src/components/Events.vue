@@ -64,8 +64,8 @@ const currentSlide = ref(0)
 const modalVisible = ref(false)
 const selectedEvent = ref(events[0])
 const isLoaded = ref(false)
-const patterns = ref([])
-const backgroundCircles = ref([])
+const patterns = ref<{ x: number; y: number; size: number; rotation: number; opacity: number; }[]>([])
+const backgroundCircles = ref<{ x: number; y: number; size: number; color: string; opacity: number; blur: number; }[]>([])
 
 const handleSlideChange = (index: number) => {
   currentSlide.value = index

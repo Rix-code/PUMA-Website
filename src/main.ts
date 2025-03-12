@@ -5,7 +5,7 @@ import App from './App.vue'
 import "flyonui/flyonui";
 import router from '../src/components/router/index'; 
 
-const app = createApp(App); // Create the Vue app instance
+const app = createApp(App); 
 
-app.use(router); // Apply Vue Router
-app.mount('#app'); // Mount the app
+app.use(router); 
+app.mount('#app'); 

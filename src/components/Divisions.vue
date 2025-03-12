@@ -1,7 +1,32 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 
-const divisions = [
+// Define the interface for division objects
+interface Division {
+  name: string
+  title: string
+  image: string
+  description: string
+}
+
+// Define the interface for pattern objects
+interface Pattern {
+  x: number
+  y: number
+  size: number
+  rotation: number
+  opacity: number
+}
+
+// Define the interface for background gradient circles
+interface GradientCircle {
+  size: number
+  x: number
+  y: number
+  opacity: number
+}
+
+const divisions: Division[] = [
   {
     name: 'BOD',
     title: 'Board of Directors',
@@ -61,7 +86,7 @@ const divisions = [
 const activeIndex = ref(2)
 let animating = ref(false)
 
-const bgGradientCircles = ref([
+const bgGradientCircles = ref<GradientCircle[]>([
   { size: 500, x: -10, y: -10, opacity: 0.07 },
   { size: 400, x: 75, y: 20, opacity: 0.05 },
   { size: 350, x: 20, y: 70, opacity: 0.06 },
@@ -69,9 +94,9 @@ const bgGradientCircles = ref([
   { size: 450, x: 90, y: 40, opacity: 0.03 }
 ])
 
-const patterns = ref([])
+const patterns = ref<Pattern[]>([])
 const generatePatterns = () => {
-  const newPatterns = []
+  const newPatterns: Pattern[] = []
   for (let i = 0; i < 12; i++) {
     newPatterns.push({
       x: Math.random() * 100,
@@ -96,23 +121,23 @@ const wrapIndex = (index: number) => {
 const changeIndexSmoothly = (direction: number) => {
   if (animating.value) return
   animating.value = true
-
+  
   const targetIndex = wrapIndex(activeIndex.value + direction)
   const step = direction > 0 ? 1 : -1
   let progress = 0
-
+  
   const animate = () => {
     if (progress >= Math.abs(direction)) {
       activeIndex.value = targetIndex
       animating.value = false
       return
     }
-
+    
     activeIndex.value = wrapIndex(activeIndex.value + step)
     progress++
     setTimeout(animate, 150)
   }
-
+  
   animate()
 }
 

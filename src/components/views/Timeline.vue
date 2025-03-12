@@ -1,72 +1,48 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
 import Navbar from '../Navbar.vue';
-import Footer from '../Footer.vue'
+import Footer from '../Footer.vue';
 
-
-const isScrolled = ref(false)
-const activeEvent = ref(null)
-const isHoveringTimeline = ref(false)
+const isScrolled = ref(false);
+const activeEvent = ref<number | null>(null); // Allow both null and number
+const isHoveringTimeline = ref(false);
 
 const timelineEvents = ref([
-    {
-        id: 1,
-        year: 2023,
-        title: "lorem",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in vestibulum tortor, vitae venenatis lectus."
-    },
-    {
-        id: 1,
-        year: 2023,
-        title: "lorem",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in vestibulum tortor, vitae venenatis lectus."
-    },
-    {
-        id: 1,
-        year: 2023,
-        title: "lorem",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in vestibulum tortor, vitae venenatis lectus."
-    },
-    {
-        id: 1,
-        year: 2023,
-        title: "lorem",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in vestibulum tortor, vitae venenatis lectus."
-    },
-    {
-        id: 1,
-        year: 2023,
-        title: "lorem",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in vestibulum tortor, vitae venenatis lectus."
-    }
-    
-])
+    { id: 1, year: 2023, title: "lorem", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+    { id: 2, year: 2024, title: "ipsum", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+    { id: 3, year: 2025, title: "dolor", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+    { id: 4, year: 2026, title: "amet", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+    { id: 5, year: 2027, title: "consectetur", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+]);
 
 const handleScroll = () => {
-    isScrolled.value = window.scrollY > 50
-}
+    isScrolled.value = window.scrollY > 50;
+};
 
 onMounted(() => {
-    window.addEventListener('scroll', handleScroll)
-    activeEvent.value = timelineEvents.value[0].id
-})
+    window.addEventListener('scroll', handleScroll);
+    if (timelineEvents.value.length > 0) {
+        activeEvent.value = timelineEvents.value[0].id; // Assign first event's ID safely
+    }
+});
 
 onBeforeUnmount(() => {
-    window.removeEventListener('scroll', handleScroll)
-})
+    window.removeEventListener('scroll', handleScroll);
+});
 
-const setActiveEvent = (id) => {
-    activeEvent.value = id
-}
+const setActiveEvent = (id: number) => {
+    activeEvent.value = id;
+};
 
 const timelineProgress = computed(() => {
-    if (!activeEvent.value) return 0
-    const index = timelineEvents.value.findIndex(event => event.id === activeEvent.value)
-    return ((index + 1) / timelineEvents.value.length) * 100
-})
+    if (activeEvent.value === null) return 0;
+    const index = timelineEvents.value.findIndex(event => event.id === activeEvent.value);
+    return ((index + 1) / timelineEvents.value.length) * 100;
+});
 
-const timelineIcon = '<circle cx="10" cy="10" r="6" /><path d="M10 4v6M10 10l3 3" />'
+const timelineIcon = '<circle cx="10" cy="10" r="6" /><path d="M10 4v6M10 10l3 3" />';
 </script>
+
 
 <template>
     <Navbar />

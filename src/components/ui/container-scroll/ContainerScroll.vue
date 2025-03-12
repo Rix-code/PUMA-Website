@@ -14,8 +14,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useWindowSize, useScroll, useElementBounding } from "@vueuse/core";
-import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue";
+import { useWindowSize, useElementBounding } from "@vueuse/core";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import ContainerScrollTitle from "./ContainerScrollTitle.vue";
 import ContainerScrollCard from "./ContainerScrollCard.vue";
 
@@ -36,8 +36,7 @@ onUnmounted(() => {
 });
 
 const { height: windowHeight } = useWindowSize();
-const { y: scrollY } = useScroll(window);
-const { top, bottom, height } = useElementBounding(containerRef);
+const { top, height } = useElementBounding(containerRef);
 
 const scrollYProgress = computed(() => {
   if (!containerRef.value) return 0;
@@ -66,6 +65,4 @@ const scale = computed(() => {
 const translateY = computed(() => {
   return -100 * scrollYProgress.value + (scrollYProgress.value === 0 ? 90 : 0);
 });
-
-
 </script>

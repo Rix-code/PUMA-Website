@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import Navbar from '../Navbar.vue';
-import VisionMission from '../VisionMission.vue';
 import Events from '../Events.vue';
 import Divisions from '../Divisions.vue';
 import test from '../test.vue';
-import Footer from '../footer.vue';
+import Footer from '../Footer.vue';
 import News from '../News.vue';
 
 const velocity = ref(2);

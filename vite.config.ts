@@ -5,6 +5,7 @@ import tailwind from 'tailwindcss'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  base: '/PUMA-Website/',
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],
@@ -16,4 +17,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  assetsInclude: ['**/*.JPG', '**/*.jpg'], 
 })
