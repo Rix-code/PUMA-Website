@@ -4,7 +4,7 @@
     class="relative flex h-[60rem] items-center justify-center p-2 md:h-[80rem] md:p-20 overflow-auto"
   >
     <div class="relative w-full py-10 md:py-40" style="perspective: 1000px">
-      <ContainerScrollTitle :translate="translateY">
+      <ContainerScrollTitle :translate="translateY" :scale="scaleTitle">
         <slot name="title"></slot>
       </ContainerScrollTitle>
       <ContainerScrollCard :rotate="rotate" :scale="scale">
@@ -13,6 +13,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { useWindowSize, useElementBounding } from "@vueuse/core";
 import { ref, onMounted, onUnmounted, computed } from "vue";
@@ -64,5 +65,10 @@ const scale = computed(() => {
 
 const translateY = computed(() => {
   return -100 * scrollYProgress.value + (scrollYProgress.value === 0 ? 90 : 0);
+});
+
+// untuk mengecilkan bang
+const scaleTitle = computed(() => {
+  return 1 - 0.3 * scrollYProgress.value;
 });
 </script>

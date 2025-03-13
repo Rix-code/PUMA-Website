@@ -339,6 +339,5 @@ onMounted(() => {
 .gallery-carousel :deep(.carousel__next:hover) {
   background: #000000;
   color: white;
-  transform: scale(1.05);
 }
 </style>

@@ -6,6 +6,7 @@ import Divisions from '../Divisions.vue';
 import test from '../test.vue';
 import Footer from '../Footer.vue';
 import News from '../News.vue';
+import FAQ from '../Faq.vue';
 
 const velocity = ref(2);
 const targetVelocity = ref(2);
@@ -96,7 +97,7 @@ const rotateText = () => {
                 </p>
                 <a href="#/cabinet"
                     class="inline-block px-8 py-3 mt-6 text-black transition-colors bg-white rounded-full hover:bg-gray-100 animate-fadeInUp animate-delay-400">
-                    Discover More
+                    About Us
                 </a>
             </div>
         
@@ -105,6 +106,7 @@ const rotateText = () => {
         <News />
         <Divisions />
         <test />
+        <FAQ />
         <Footer />
     </div>
 </template>
