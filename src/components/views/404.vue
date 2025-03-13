@@ -142,7 +142,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted} from "vue";
 
 onMounted(() => {
     const canvas = document.getElementById("gameCanvas") as HTMLCanvasElement;
@@ -250,6 +250,7 @@ onMounted(() => {
 
     // Initial canvas setup with instructions
     function drawInitialScreen() {
+        gameInitialized
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawGrid();
         
@@ -449,7 +450,6 @@ onMounted(() => {
 
         // Calculate time delta
         if (!lastTime) lastTime = timestamp;
-        const delta = timestamp - lastTime;
         lastTime = timestamp;
 
         // Clear canvas
