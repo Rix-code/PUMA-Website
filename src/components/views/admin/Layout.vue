@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed} from 'vue'
 import { useRoute } from 'vue-router'
 import SideBar from './Sidebar.vue'
 

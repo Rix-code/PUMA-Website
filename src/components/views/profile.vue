@@ -69,22 +69,6 @@ const saveProfile = () => {
     isEditing.value = false;
 };
 
-const simulateUpload = () => {
-    isUploading.value = true;
-    uploadProgress.value = 0;
-
-    const interval = setInterval(() => {
-        uploadProgress.value += 5;
-
-        if (uploadProgress.value >= 100) {
-            clearInterval(interval);
-            isUploading.value = false;
-            const randomIndex = Math.floor(Math.random() * avatarOptions.length);
-            editedUser.avatar = avatarOptions[randomIndex];
-        }
-    }, 100);
-};
-
 const selectAvatar = (avatarUrl: string) => {
     editedUser.avatar = avatarUrl;
 };

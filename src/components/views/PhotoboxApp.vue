@@ -135,26 +135,6 @@ const updateFullscreenState = () => {
     );
 };
 
-const toggleFullscreen = async () => {
-    try {
-        if (!isFullscreen.value) {
-            const elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                await elem.requestFullscreen();
-            } else if ((elem as any).webkitRequestFullscreen) {
-                await (elem as any).webkitRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-                await document.exitFullscreen();
-            } else if ((document as any).webkitExitFullscreen) {
-                await (document as any).webkitExitFullscreen();
-            }
-        }
-    } catch (err) {
-        console.error('Error toggling fullscreen:', err);
-    }
-};
 
 const loadCameras = async () => {
     isCameraListLoading.value = true;
