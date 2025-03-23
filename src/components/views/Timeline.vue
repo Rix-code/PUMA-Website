@@ -4,7 +4,7 @@ import Navbar from '../Navbar.vue';
 import Footer from '../Footer.vue';
 
 const isScrolled = ref(false);
-const activeEvent = ref<number | null>(null); // Allow both null and number
+const activeEvent = ref<number | null>(null); 
 const isHoveringTimeline = ref(false);
 
 const timelineEvents = ref([
@@ -22,7 +22,7 @@ const handleScroll = () => {
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     if (timelineEvents.value.length > 0) {
-        activeEvent.value = timelineEvents.value[0].id; // Assign first event's ID safely
+        activeEvent.value = timelineEvents.value[0].id; 
     }
 });
 

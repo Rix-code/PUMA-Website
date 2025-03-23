@@ -1,9 +1,6 @@
 <template>
-    <div class="relative w-full min-h-screen overflow-hidden text-black bg-white faq-container">
-        <!-- Background grid pattern -->
+    <div class="relative w-full min-h-screen overflow-hidden text-black bg-white faq-container question-cursor">
         <div class="absolute inset-0 grid-lines opacity-10"></div>
-
-        <!-- Header -->
         <div class="container relative z-10 px-4 pt-20 pb-10 mx-auto">
             <div class="mb-16 text-center">
                 <h1 class="mb-4 font-mono text-4xl font-bold tracking-wider">
@@ -14,13 +11,11 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod risus ac nisi feugiat.
                 </p>
             </div>
-
-            <!-- FAQ Section -->
             <div class="max-w-3xl mx-auto mb-16 space-y-6">
                 <div v-for="(faq, index) in faqs" :key="index"
                     class="overflow-hidden border rounded-lg faq-item border-black/10">
                     <button @click="toggleFaq(index)"
-                        class="flex items-center justify-between w-full px-6 py-4 font-mono font-medium text-left transition-all duration-300 hover:bg-black/5"
+                        class="flex items-center justify-between w-full px-6 py-4 font-mono font-medium text-left transition-all duration-300 faq-question hover:bg-black/5"
                         :class="{ 'bg-black/5': openIndex === index }">
                         <div class="flex items-center">
                             <span class="px-2 py-1 mr-3 text-xs rounded-sm bg-black/10 text-black/80">
@@ -40,25 +35,18 @@
         </div>
     </div>
 </template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
-
 const openIndex = ref<number | null>(null)
-
-
 const toggleFaq = (index: number): void => {
     openIndex.value = openIndex.value === index ? null : index
 }
-
 interface FaqItem {
     question: string;
     answer: string;
 }
-
 const loremQuestion = "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
 const loremAnswer = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod risus ac nisi feugiat, vel facilisis tellus dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla facilisi. Sed vitae metus non enim fermentum consequat. Donec eget magna vel purus lobortis ultricies."
-
 const faqs: FaqItem[] = [
     {
         question: loremQuestion,
@@ -74,7 +62,6 @@ const faqs: FaqItem[] = [
     }
 ]
 </script>
-
 <style scoped>
 .grid-lines {
     background-image:
@@ -82,8 +69,8 @@ const faqs: FaqItem[] = [
         linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 20px 20px;
 }
-
 .faq-container {
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
 }
+
 </style>

@@ -105,23 +105,6 @@ export default defineComponent({
                             </span>
                         </button>
                     </form>
-
-                    <div class="relative flex items-center justify-center">
-                        <div class="flex-grow border-t border-black/10"></div>
-                        <span class="flex-shrink mx-4 font-mono text-xs text-black/40">ALTERNATIVE ACCESS</span>
-                        <div class="flex-grow border-t border-black/10"></div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <button
-                            class="flex items-center justify-center px-4 py-2 text-black transition-all border rounded-lg bg-black/5 border-black/10 hover:bg-black/10">
-                            <span class="font-mono text-xs">Google ID</span>
-                        </button>
-                        <button
-                            class="flex items-center justify-center px-4 py-2 text-black transition-all border rounded-lg bg-black/5 border-black/10 hover:bg-black/10">
-                            <span class="font-mono text-xs">GitHub ID</span>
-                        </button>
-                    </div>
                 </div>
 
                 <div v-if="activeTab === 'register'" class="p-8 space-y-6">
