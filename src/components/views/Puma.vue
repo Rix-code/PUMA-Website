@@ -39,7 +39,7 @@ const divisions: Division[] = [
     {
         name: 'BOD',
         title: 'Board of Directors',
-        image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
+        image: 'D:\PUMA Web\PUMA-Website\public\DSC_0926.JPG',
         description: 'lorem'
     },
     {
@@ -50,13 +50,13 @@ const divisions: Division[] = [
     },
     {
         name: 'HRD',
-        title: 'Human Resources',
+        title: 'Human Resources Development',
         image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
         description: 'lorem'
     },
     {
         name: 'ICM',
-        title: 'Internal Communications',
+        title: 'Information and Creative Media',
         image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
         description: 'lorem'
     },
