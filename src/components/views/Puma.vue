@@ -39,7 +39,7 @@ const divisions: Division[] = [
     {
         name: 'BOD',
         title: 'Board of Directors',
-        image: 'D:\PUMA Web\PUMA-Website\public\DSC_0926.JPG',
+        image: '../../../public/DSC_0926.png', 
         description: 'lorem'
     },
     {
