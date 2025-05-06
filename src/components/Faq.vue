@@ -8,7 +8,7 @@
                 </h1>
                 <div class="w-24 h-1 mx-auto mb-6 bg-black/80"></div>
                 <p class="max-w-2xl mx-auto font-mono text-black/70">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod risus ac nisi feugiat.
+                    Here are some of the frequently asked questions
                 </p>
             </div>
             <div class="max-w-3xl mx-auto mb-16 space-y-6">
@@ -45,22 +45,20 @@ interface FaqItem {
     question: string;
     answer: string;
 }
-const loremQuestion = "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
-const loremAnswer = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod risus ac nisi feugiat, vel facilisis tellus dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla facilisi. Sed vitae metus non enim fermentum consequat. Donec eget magna vel purus lobortis ultricies."
 const faqs: FaqItem[] = [
-    {
-        question: loremQuestion,
-        answer: loremAnswer
-    },
-    {
-        question: loremQuestion,
-        answer: loremAnswer
-    },
-    {
-        question: loremQuestion,
-        answer: loremAnswer
-    }
-]
+  {
+    question: "How to join PUMA Informatics?",
+    answer: "You can keep update with our social media and our website for more information of regenetics to join us."
+  },
+  {
+    question: "Where can I find information about PUMA Informatics?",
+    answer: "You can mostly use our website to see every updates about PUMA Informatics because we provide everything here. If you are curious about our social media, you can also visit them!"
+  },
+  {
+    question: "If I have any specific inquiries, who should I approach?",
+    answer: "Don't worry! We got your problem handled by us here! We'll make sure to help you regarding of your academic campaign. Kindly let us know so we can proceed them to the faculty!"
+  }
+];
 </script>
 <style scoped>
 .grid-lines {

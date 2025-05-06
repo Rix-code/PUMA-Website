@@ -8,12 +8,20 @@ const activeEvent = ref<number | null>(null);
 const isHoveringTimeline = ref(false);
 
 const timelineEvents = ref([
-    { id: 1, year: 2023, title: "lorem", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: 2, year: 2024, title: "ipsum", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: 3, year: 2025, title: "dolor", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: 4, year: 2026, title: "amet", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: 5, year: 2027, title: "consectetur", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
-]);
+  { id: 1, month: "September", title: "Regenetics", description: "-" },
+  { id: 2, month: "October", title: "Training, 1st Aformation Midterm", description: "-" },
+  { id: 3, month: "November", title: "Brainstormics", description: "-" },
+  { id: 4, month: "December", title: " Unitics, Guest Lecture, 2nd Aformation Final Exam", description: "-" },
+  { id: 5, month: "January", title: "-", description: "-" },
+  { id: 6, month: "February", title: " Temu Alumni, 3rd Aformation Midterm", description: "-" },
+  { id: 7, month: "March", title: " Informatics Connect (Icon / Comstud)", description: "-" },
+  { id: 8, month: "April", title: "-", description: "-" },
+  { id: 9, month: "May", title: "4th Aformation Final Exam, Preschotics Beasiswa Unggulan", description: "-" },
+  { id: 10, month: "June", title: "Company Visit", description: "-" },
+  { id: 11, month: "July", title: "Elevate Informatics Festival, Regenetics", description: "-" },
+  { id: 12, month: "August", title: "Regenetics, Inforuum", description: "-" }
+])
+
 
 const handleScroll = () => {
     isScrolled.value = window.scrollY > 50;
@@ -51,13 +59,13 @@ const timelineIcon = '<circle cx="10" cy="10" r="6" /><path d="M10 4v6M10 10l3 3
         <main class="container relative z-10 px-4 py-20 mx-auto">
             <div class="mb-20 text-center">
                 <h1 class="relative inline-block mb-4 text-4xl font-bold">
-                    PUMA TIMELINE
+                    PUMA TIMELINE 2024/2025
                     <div
                         class="absolute w-full h-px bg-gradient-to-r from-transparent via-white to-transparent -bottom-2">
                     </div>
                 </h1>
                 <p class="max-w-2xl mx-auto mt-6 text-lg text-white/70">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex saepe repudiandae a cumque, in minus deserunt quam laboriosam ab blanditiis rerum minima quo, repellendus harum, sit tempore placeat cupiditate rem.
+                    Here is our Timeline in Kaustav Cabinet Campaign
                 </p>
             </div>
 
@@ -81,7 +89,7 @@ const timelineIcon = '<circle cx="10" cy="10" r="6" /><path d="M10 4v6M10 10l3 3
                         </div>
 
                         <div class="pl-10 mb-2 text-sm font-bold md:pl-0 md:text-center">
-                            {{ event.year }}
+                            {{ event.month }}
                         </div>
 
                         <div

@@ -88,14 +88,14 @@ const closeModal = () => {
 
 
                             <p class="relative z-10 mb-8 text-lg text-gray-800">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quaerat facere quam perspiciatis laboriosam corporis maxime optio, exercitationem maiores dicta tempore, cum eligendi repellendus, minima aperiam tempora quibusdam ut hic.
+                                We've got some interesting news for you guys!
                             </p>
 
                             <div
                                 class="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden text-base font-medium text-white transition-all duration-300 rounded-full shadow-md cursor-pointer bg-gradient-to-r from-gray-700 to-black hover:from-gray-800 hover:to-gray-900 hover:shadow-lg group">
                                 <span
                                     class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-10"></span>
-                                <span class="relative">Subscribe to Updates</span>
+                                <span class="relative">Click Here to Expand</span>
                                 <svg class="relative w-5 h-5 ml-2" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

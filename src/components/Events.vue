@@ -9,8 +9,8 @@ const windowWidth = ref(0)
 
 const events = [
   {
-    title: 'Regenetics',
-    date: '2025',
+    title: 'Regenetics 2024/2025',
+    date: 'September 2024',
     description: 'The PUMA Informatics Regeneration is an event to recruit new members who are enthusiastic and committed to joining the organization.',
     images: [
       'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
@@ -19,8 +19,8 @@ const events = [
     ]
   },
   {
-    title: 'UNITICS',
-    date: '2025',
+    title: 'Unitics',
+    date: 'December 2024',
     description: 'Unitics (Unity of Informatics) is organized to welcome new members to PUMA IT. The primary focus is to create an inclusive environment.',
     images: [
       'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
@@ -29,9 +29,9 @@ const events = [
     ]
   },
   {
-    title: 'INFORUUM',
-    date: '2025',
-    description: 'Inforuum (Informatics Continuum) is a farewell event for PUMA IT members, allowing them to bid farewell and reminisce about shared moments.',
+    title: '1st Aformation Midterm',
+    date: 'October 2024',
+    description: '-',
     images: [
       'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
       '../public/sample5.jpg',
@@ -39,13 +39,121 @@ const events = [
     ]
   },
   {
-    title: 'TEMU ALUMNI',
-    date: '2025',
-    description: 'Temu Alumni is an event aimed at enhancing the relationship between students and alumni in the field of informatics through sharing sessions.',
+    title: 'PUMA Training',
+    date: 'October 2024',
+    description: '-',
     images: [
       'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
       '../public/sample7.jpg',
       '../public/sample8.jpg'
+    ]
+  },
+  {
+    title: 'Brainstormics',
+    date: 'November 2024',
+    description: '-',
+    images: [
+      '../public/sample9.jpg',
+      '../public/sample10.jpg'
+    ]
+  },
+  {
+    title: 'Guest Lecture',
+    date: 'December 2024',
+    description: '-',
+    images: [
+      '../public/sample11.jpg',
+      '../public/sample12.jpg'
+    ]
+  },
+  {
+    title: '2nd Aformation Final Exam',
+    date: 'December 2024',
+    description: '-',
+    images: [
+      '../public/sample13.jpg',
+      '../public/sample14.jpg'
+    ]
+  },
+  {
+    title: 'Temu Alumni',
+    date: 'February 2025',
+    description: '-',
+    images: [
+      '../public/sample15.jpg',
+      '../public/sample16.jpg'
+    ]
+  },
+  {
+    title: '3rd Aformation Midterm',
+    date: 'February 2025',
+    description: '-',
+    images: [
+      '../public/sample17.jpg',
+      '../public/sample18.jpg'
+    ]
+  },
+  {
+    title: 'Informatics Connect (Icon / Comstud)',
+    date: 'March 2025',
+    description: '-',
+    images: [
+      '../public/sample19.jpg',
+      '../public/sample20.jpg'
+    ]
+  },
+  {
+    title: '4th Aformation Final Exam',
+    date: 'May 2025',
+    description: '-',
+    images: [
+      '../public/sample21.jpg',
+      '../public/sample22.jpg'
+    ]
+  },
+  {
+    title: 'Preschotics Beasiswa Unggulan',
+    date: 'May 2025',
+    description: '-',
+    images: [
+      '../public/sample21.jpg',
+      '../public/sample22.jpg'
+    ]
+  },
+  {
+    title: 'Company Visit',
+    date: 'June 2025',
+    description: '-',
+    images: [
+      '../public/sample21.jpg',
+      '../public/sample22.jpg'
+    ]
+  },
+  {
+    title: 'Elevate Informatics Festival',
+    date: 'July 2025',
+    description: '-',
+    images: [
+      '../public/sample21.jpg',
+      '../public/sample22.jpg'
+    ]
+  },
+  {
+    title: 'Regenetics',
+    date: 'August 2025',
+    description: '-',
+    images: [
+      '../public/sample21.jpg',
+      '../public/sample22.jpg'
+    ]
+  },
+  {
+    title: 'Inforuum',
+    date: 'August 2025',
+    description: '-',
+    images: [
+      '../public/sample21.jpg',
+      '../public/sample22.jpg'
     ]
   }
 ]

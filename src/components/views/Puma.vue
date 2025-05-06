@@ -39,7 +39,7 @@ const divisions: Division[] = [
     {
         name: 'BOD',
         title: 'Board of Directors',
-        image: '../../../public/DSC_0926.png', 
+        image: 'DSC_0926.JPG', 
         description: 'lorem'
     },
     {
@@ -51,7 +51,7 @@ const divisions: Division[] = [
     {
         name: 'HRD',
         title: 'Human Resources Development',
-        image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
+        image: 'hrd.JPG',
         description: 'lorem'
     },
     {
@@ -104,71 +104,776 @@ const memberAvatars = [
 ]
 
 const generateMembers = (): Member[] => {
-    const members: Member[] = []
-    const regularPositions = ['HOD', 'VOD', 'Member']
-    const bodPositions = ['CP', 'VCP1', 'VCP2', 'Treasurer', 'Secretary']
-    const batches = ['2023', '2024']
-    const firstNames = ['Jonas', 'Martha', 'Ulrich', 'Katharina', 'Hannah', 'Magnus', 'Bartosz', 'Franziska', 'Elisabeth', 'Noah', 'Helge', 'Claudia', 'Regina', 'Tronte', 'Charlotte', 'Jana', 'Egon', 'Aleksander', 'Gretchen', 'Silja']
-    const lastNames = ['Kahnwald', 'Nielsen', 'Doppler', 'Tiedemann', 'Obendorf', 'Albers', 'Wöller', 'Conwald', 'Boris', 'Schmidt', 'Tauber', 'Winden', 'Erdmann', 'Krüger', 'Pauls', 'Bergen', 'Lorenz', 'Fischer', 'Meier', 'Schwarz']
-
-    const assignedBodPositions = new Set()
-
-    for (let i = 0; i < 100; i++) {
-        const firstName = firstNames[Math.floor(Math.random() * firstNames.length)]
-        const lastName = lastNames[Math.floor(Math.random() * lastNames.length)]
-        const name = `${firstName} ${lastName}`
-        const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@puma.org`
-        const cabinet = cabinets[Math.floor(Math.random() * cabinets.length)]
-        const batch = batches[Math.floor(Math.random() * batches.length)]
-        const division = divisions[Math.floor(Math.random() * divisions.length)].name
-        const avatar = memberAvatars[i % memberAvatars.length]
-        const instagram = `https://instagram.com/${firstName.toLowerCase()}_${lastName.toLowerCase()}`
-        const linkedin = `https://linkedin.com/in/${firstName.toLowerCase()}-${lastName.toLowerCase()}`
-        const personalDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-
-        let position
-        if (division === 'BOD') {
-            if (assignedBodPositions.size < bodPositions.length) {
-                let availablePositions = bodPositions.filter(pos => !assignedBodPositions.has(pos))
-                position = availablePositions[Math.floor(Math.random() * availablePositions.length)]
-                assignedBodPositions.add(position)
-            } else {
-                const otherDivisions = divisions.filter(d => d.name !== 'BOD')
-                const newDivision = otherDivisions[Math.floor(Math.random() * otherDivisions.length)].name
-                position = regularPositions[Math.floor(Math.random() * regularPositions.length)]
-                members.push({
-                    id: i + 1,
-                    name,
-                    email,
-                    position,
-                    cabinet,
-                    batch,
-                    division: newDivision,
-                    avatar,
-                    instagram,
-                    linkedin,
-                    personalDescription
-                })
-                continue
-            }
-        } else {
-            position = regularPositions[Math.floor(Math.random() * regularPositions.length)]
-        }
-
-        members.push({
-            id: i + 1,
-            name,
-            email,
-            position,
-            cabinet,
-            batch,
-            division,
-            avatar,
-            instagram,
-            linkedin,
-            personalDescription
-        })
-    }
+    const members: Member[] = [
+        {
+            id: 1,
+            name: "Abdurrahman Khairi",
+            email: "-",
+            position: "Chairperson",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "BOD",
+            avatar: "khairi.JPG", // Replace with actual image path or URL
+            instagram: "https://instagram.com/",
+            linkedin: "https://linkedin.com/in/",
+            personalDescription: "-"
+        },
+        {
+            id: 2,
+            name: "Filbert Sembiring Meliala",
+            email: "-",
+            position: "Vice Chairperson 1",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "BOD",
+            avatar: "filbert.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 3,
+            name: "Leonardo Dos Santos",
+            email: "-",
+            position: "Vice Chairperson 2",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "BOD",
+            avatar: "leonardo.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 4,
+            name: "Moshe Dayan",
+            email: "-",
+            position: "Senior Treasurer",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "BOD",
+            avatar: "moshe.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 5,
+            name: "Elvia Aptanisa",
+            email: "-",
+            position: "Junior Treasurer",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "BOD",
+            avatar: "elvi.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 6,
+            name: "Michelle",
+            email: "-",
+            position: "Junior Treasurer",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "BOD",
+            avatar: "michelle.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 7,
+            name: "Desy Nursalsabila",
+            email: "-",
+            position: "Senior Secretary",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "BOD",
+            avatar: "desy.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 8,
+            name: "Putri Zahara",
+            email: "-",
+            position: "Junior Secretary",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "BOD",
+            avatar: "putri.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 9,
+            name: "Zuldan Fahrizal Rahman",
+            email: "-",
+            position: "Junior Secretary",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "BOD",
+            avatar: "zuldan.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 10,
+            name: "Isya Maghfira Zalfa",
+            email: "-",
+            position: "Head of External Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "ER",
+            avatar: "cica.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 11,
+            name: "Sarahwati",
+            email: "-",
+            position: "Vice of External Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "ER",
+            avatar: "sarah.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 12,
+            name: "Shanty",
+            email: "-",
+            position: "Member of External Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ER",
+            avatar: "shanty.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 13,
+            name: "Naufal Rizki Pinugroho",
+            email: "-",
+            position: "Member of External Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ER",
+            avatar: "nopal.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 14,
+            name: "Made Mas Pradnya Prabawa",
+            email: "-",
+            position: "Member of External Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ER",
+            avatar: "prad.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 15,
+            name: "Gideon Anggara Siagian",
+            email: "-",
+            position: "Member of External Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ER",
+            avatar: "gideon.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 16,
+            name: "Bianca Vallerie",
+            email: "-",
+            position: "Head of Internal Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "IR",
+            avatar: "bianca.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 17,
+            name: "Abigail Tiara Larasati",
+            email: "-",
+            position: "Vice of Internal Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "IR",
+            avatar: "bigel.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 18,
+            name: "Johana Veronica Setiawan",
+            email: "-",
+            position: "Member of Internal Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "IR",
+            avatar: "joana.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 19,
+            name: "Muhammad Dzaki Abrar",
+            email: "-",
+            position: "Member of Internal Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "IR",
+            avatar: "dzaki.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 20,
+            name: "Zain Akbar",
+            email: "-",
+            position: "Member of Internal Relation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "IR",
+            avatar: "akbar.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 21,
+            name: "hana Khairunnisa Nabiilah",
+            email: "-",
+            position: "Head of Student Academic and Competition",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "SAC",
+            avatar: "hana.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 22,
+            name: "Sarah Kimberly Fischer",
+            email: "-",
+            position: "Vice of Student Academy and Competition",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "SAC",
+            avatar: "kim.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 23,
+            name: "Lutfi Maulana",
+            email: "-",
+            position: "Member of Student Academy and Competition",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "SAC",
+            avatar: "lutfi.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 24,
+            name: "Wilbert Leonard Harriman",
+            email: "-",
+            position: "Member of Student Academy and Competition",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "SAC",
+            avatar: "wilbert.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 25,
+            name: "Yasmin Raihanah Inayudha",
+            email: "-",
+            position: "Member of Student Academy and Competition",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "SAC",
+            avatar: "yasmin.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 26,
+            name: "Cut Kheysa Sakbania",
+            email: "-",
+            position: "Member of Student Academy and Competition",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "SAC",
+            avatar: "cut.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 27,
+            name: "Made Mahatti Prayascita Chandra",
+            email: "-",
+            position: "Head of Information and Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "ICM",
+            avatar: "mahatti.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 28,
+            name: "Nadifah Aulia Rahmani",
+            email: "-",
+            position: "Vice of Media Information",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "ICM",
+            avatar: "nadifah.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 29,
+            name: "Muhammad Afdal Fikri",
+            email: "-",
+            position: "Member of Media Infromation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "afdal.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        }, // in 30 database is Gamma, i change to sort tidy; 31 is naila; 32 is azqa
+        {
+            id: 30,
+            name: "Naila Olivia",
+            email: "-",
+            position: "Member of Media Infromation",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "olivia.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 31,
+            name: "Azqa Difani Akbar",
+            email: "-",
+            position: "Vice of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "ICM",
+            avatar: "azka.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 32,
+            name: "Gamma Ahmad Zaki Kurnia Budihardjo",
+            email: "-",
+            position: "Member of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "gamma.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 33,
+            name: "Almira Shinta Aulia",
+            email: "-",
+            position: "Member of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "almira.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 34,
+            name: "Richie Obasa",
+            email: "-",
+            position: "Member of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "richie.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 35,
+            name: "Gabriel Hamonangan Lumban Tobing",
+            email: "-",
+            position: "Member of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "hamongan.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 36,
+            name: "Raisya Eka Putri",
+            email: "-",
+            position: "Member of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "raisya.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 37,
+            name: "Kevin Syonin",
+            email: "-",
+            position: "Member of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "kevin.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 38,
+            name: "Dewa Anggara Satria Pratama",
+            email: "-",
+            position: "Member of Creative Media",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "ICM",
+            avatar: "dewa.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 39,
+            name: "Rix Valdo",
+            email: "-",
+            position: "Head of Research and Technology",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "RNT",
+            avatar: "avatar2.png",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 40,
+            name: "Jason Anthony Wibowo",
+            email: "-",
+            position: "Vice of Research and Technology",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "RNT",
+            avatar: "avatar2.png",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 41,
+            name: "Muhammad Haikal Islami",
+            email: "-",
+            position: "Member of Research and Technology",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "RNT",
+            avatar: "avatar2.png",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 42,
+            name: "Briant Jasper",
+            email: "-",
+            position: "Member of Research and Technology",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "RNT",
+            avatar: "avatar2.png",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 43,
+            name: "Keira Nevrada Lay",
+            email: "-",
+            position: "Member of Research and Technology",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "RNT",
+            avatar: "avatar2.png",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 44,
+            name: "Janet Dewi Evangeline",
+            email: "-",
+            position: "Member of Research and Technology",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "RNT",
+            avatar: "avatar2.png",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 45,
+            name: "Nisrina Izza Nur Aisyah",
+            email: "-",
+            position: "Member of Research and Technology",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "RNT",
+            avatar: "avatar2.png",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 46,
+            name: "Ubaidillah Al-Azhar",
+            email: "-",
+            position: "Head of Technopreneur",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "TECHNOPRENEUR",
+            avatar: "ubai.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 47,
+            name: "Salsa Ica Indriani",
+            email: "-",
+            position: "Vice of Technopreneur",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "TECHNOPRENEUR",
+            avatar: "ica.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 48,
+            name: "Navisa Ersa Sabina",
+            email: "-",
+            position: "Member of Technopreneur",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "TECHNOPRENEUR",
+            avatar: "sasa.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 49,
+            name: "Michael Bryan Mandey",
+            email: "-",
+            position: "Member of Technopreneur",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "TECHNOPRENEUR",
+            avatar: "michael.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 50,
+            name: "Nailha Sakhila Dewi",
+            email: "-",
+            position: "Member of Technopreneur",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "TECHNOPRENEUR",
+            avatar: "nailha.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 51,
+            name: "Joy Adelia Sihombing",
+            email: "-",
+            position: "Head of Human Resources Development",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "HRD",
+            avatar: "joy.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 52,
+            name: "Intan Kumala Pasya",
+            email: "-",
+            position: "Vice of Human Resources Development",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "HRD",
+            avatar: "intan.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 53,
+            name: "Tio Muhammad Rizky",
+            email: "-",
+            position: "Member of Human Resources Development",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "HRD",
+            avatar: "tio.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 54,
+            name: "Angelina Yolanda Christin Lubis",
+            email: "-",
+            position: "Member of Human Resources Development",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "HRD",
+            avatar: "angel.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 55,
+            name: "Ernest Teo",
+            email: "-",
+            position: "Head of Student Passions and Talents",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "SPT",
+            avatar: "ernest.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 56,
+            name: "Rivan Meinaki",
+            email: "-",
+            position: "Vice of Student Passions and Talents",
+            cabinet: "Kaustav Cabinet",
+            batch: "2023",
+            division: "SPT",
+            avatar: "rivan.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 57,
+            name: "Wisnu Alfian Nur Ashar",
+            email: "-",
+            position: "Member of Student Passions and Talents",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "SPT",
+            avatar: "wisnu.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 58,
+            name: "Fauzan Fajri",
+            email: "-",
+            position: "Member of Student Passions and Talents",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "SPT",
+            avatar: "fauzan.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        {
+            id: 59,
+            name: "Qwyn Celine Djimondo",
+            email: "-",
+            position: "Member of Student Passions and Talents",
+            cabinet: "Kaustav Cabinet",
+            batch: "2024",
+            division: "SPT",
+            avatar: "qwin.JPG",
+            instagram: "https://instagram.com/martha_nielsen",
+            linkedin: "https://linkedin.com/in/martha-nielsen",
+            personalDescription: "-"
+        },
+        // Add more member objects below as needed
+    ]
 
     return members
 }
