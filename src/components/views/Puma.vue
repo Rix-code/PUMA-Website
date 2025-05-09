@@ -94,15 +94,6 @@ const divisions: Division[] = [
 
 const cabinets = ['Kaustav', 'Kopi']
 
-const memberAvatars = [
-    'https://i.pinimg.com/474x/2d/66/90/2d669016a3e3f5316b0589741e8ca834.jpg',
-    'https://i.pinimg.com/474x/9c/58/0a/9c580ad4644fffdb9bf4eedb7b61eec2.jpg',
-    'https://i.pinimg.com/474x/d5/14/5e/d5145e0284dcf8b0d828b78d2ebeaacc.jpg',
-    'https://i.pinimg.com/474x/a1/da/a6/a1daa6f2d1416629a2af13989ebcaa9f.jpg',
-    'https://i.pinimg.com/474x/8f/72/31/8f723127ce24c5983fd21d6fa84733a8.jpg',
-    'https://i.pinimg.com/474x/1c/02/5f/1c025fa699fe372269009dad8681ca9e.jpg'
-]
-
 const generateMembers = (): Member[] => {
     const members: Member[] = [
         {
