@@ -29,64 +29,62 @@ interface GradientCircle {
   y: number
   opacity: number
 }
-
 const divisions: Division[] = [
   {
     name: 'BOD',
     title: 'Board of Directors',
-    image: '/division/bod.JPG',
+    image: '/PUMA-Website/division/bod.JPG', 
     description: 'lorem'
   },
   {
     name: 'RNT',
     title: 'Research and Technology',
-    image: 'https://i.pinimg.com/736x/f2/96/65/f296659f98543ad0ee11738a62e7652f.jpg',
+    image: '/PUMA-Website/division/rnt.jpg',
     description: 'lorem'
   },
   {
     name: 'HRD',
     title: 'Human Resources Development',
-    image: '/division/hrd.JPG',
+    image: '/PUMA-Website/division/hrd.JPG',
     description: 'lorem'
   },
   {
     name: 'ICM',
     title: 'Information and Creative Media',
-    image: '/division/icm.JPG',
+    image: '/PUMA-Website/division/icm.JPG',
     description: 'lorem'
   },
   {
     name: 'IR',
     title: 'Internal Relations',
-    image: '/division/internal.JPG',
+    image: '/PUMA-Website/division/internal.JPG',
     description: 'lorem'
   },
   {
     name: 'ER',
     title: 'External Relations',
-    image: '/division/EXT.JPG',
+    image: '/PUMA-Website/division/EXT.JPG',
     description: 'lorem'
   },
   {
     name: 'SAC',
     title: 'Student Academic & Competition',
-    image: '/division/sac.JPG',
+    image: '/PUMA-Website/division/sac.JPG',
     description: 'lorem'
   },
   {
     name: 'SPT',
     title: 'Student Passions & Talents',
-    image: '/division/spt.JPG',
+    image: '/PUMA-Website/division/spt.JPG',
     description: 'lorem'
   },
   {
     name: 'TECHNOPRENEUR',
     title: 'Technopreneur',
-    image: '/division/Technoprenet.JPG',
+    image: '/PUMA-Website/division/Technoprenet.JPG', 
     description: 'lorem'
   }
-]
-
+];
 const activeIndex = ref(0)
 const animating = ref(false)
 const transitionDirection = ref<'left' | 'right' | 'none'>('none') 

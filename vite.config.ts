@@ -5,7 +5,7 @@ import tailwind from 'tailwindcss'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/', 
+  base: '/PUMA-Website/',
   assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.png', '**/*.svg'], 
   css: {
     postcss: {
