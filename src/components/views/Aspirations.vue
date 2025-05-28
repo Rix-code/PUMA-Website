@@ -125,12 +125,6 @@ const displayedAspirations = computed(() => {
     return aspirations.value.slice(0, displayLimit.value);
 });
 
-const scrollToForm = () => {
-    formSectionRef.value?.scrollIntoView({
-        behavior: 'smooth'
-    });
-};
-
 const submitAspiration = () => {
     if (newAspiration.value.name && newAspiration.value.text) {
         const aspirationToAdd: Aspiration = {

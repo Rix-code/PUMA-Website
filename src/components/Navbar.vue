@@ -102,9 +102,6 @@ const isAdmin = computed(() => {
   return isLoggedIn.value && currentUser.value.role === 'admin'
 })
 
-const isMember = computed(() => {
-  return isLoggedIn.value && currentUser.value.role === 'member'
-})
 
 const isOtherPageActive = computed(() => {
   return otherDropdownItems.some(item => item.path === route.path)
@@ -241,7 +238,7 @@ const closeMenusOnClickOutside = (event: MouseEvent) => {
       </div>
 
       <div class="mb-6 space-y-2">
-        <router-link v-for="(item, index) in navItems" :key="`mobile-${item.name}`" :to="item.path" :class="[
+        <router-link v-for="(item) in navItems" :key="`mobile-${item.name}`" :to="item.path" :class="[
           'flex items-center justify-between p-3 font-medium text-white transition-all duration-300 rounded-xl group',
           route.path === item.path ? 'bg-white/15 border border-white/20' : 'hover:bg-white/10'
         ]" @click="isMenuOpen = false">

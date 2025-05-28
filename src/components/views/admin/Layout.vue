@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router'
 import SideBar from './Sidebar.vue'
 
 const isCollapsed = ref(false)
-const mobileMenuOpen = ref(false)
 
 const route = useRoute()
 
