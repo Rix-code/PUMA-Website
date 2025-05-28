@@ -2,22 +2,17 @@
 import { ref, computed, onMounted, onUnmounted, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-const props = defineProps({
-    defaultCollapsed: {
-        type: Boolean,
-        default: false
-    }
-})
+const emit = defineEmits([]) 
 
-const emit = defineEmits(['toggle'])
-
-const isCollapsed = ref(props.defaultCollapsed)
 const isUserMenuOpen = ref(false)
 const route = useRoute()
 const state = reactive({
     isMobile: false,
-    menuPosition: { left: '16rem', top: '4rem' }
+    menuPosition: { left: '16rem', top: '4rem' } 
 })
+
+const sidebarMobileWidth = '4rem' 
+const sidebarDesktopWidth = '16rem' 
 
 watch(() => route.path, () => {
     if (isUserMenuOpen.value) {
@@ -37,35 +32,26 @@ const navItems = [
     { name: 'Events', path: '/admin/event', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z', showNumber: false },
     { name: 'Member', path: '/admin/member', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z', showNumber: false },
     { name: 'Organizations', path: '/admin/organizations', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', showNumber: false },
-    {name: 'News', path: '/admin/news', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z', showNumber: false
+    {
+        name: 'News', path: '/admin/news', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z', showNumber: false
     }
 ]
 
-const loadSavedState = () => {
-    const savedState = localStorage.getItem('sidebarCollapsed')
-    if (savedState !== null) {
-        isCollapsed.value = savedState === 'true'
-        emit('toggle', isCollapsed.value)
-    }
-}
-
-const toggleSidebar = () => {
-    isCollapsed.value = !isCollapsed.value
-    localStorage.setItem('sidebarCollapsed', isCollapsed.value.toString())
-    emit('toggle', isCollapsed.value)
-}
 
 const toggleUserMenu = () => {
     isUserMenuOpen.value = !isUserMenuOpen.value
-    updateMenuPosition()
+    if (isUserMenuOpen.value) { 
+        updateMenuPosition()
+    }
 }
 
 const updateMenuPosition = () => {
-    if (isCollapsed.value) {
-        state.menuPosition.left = state.isMobile ? '4rem' : '4.5rem'
+    if (state.isMobile) {
+        state.menuPosition.left = sidebarMobileWidth
     } else {
-        state.menuPosition.left = '16rem'
+        state.menuPosition.left = sidebarDesktopWidth
     }
+    state.menuPosition.top = '4rem';
 }
 
 const activePath = computed(() => {
@@ -74,28 +60,19 @@ const activePath = computed(() => {
 
 const closeUserMenu = (event: MouseEvent) => {
     const target = event.target as HTMLElement
-    if (!target.closest('.user-menu') && isUserMenuOpen.value) {
+    if (!target.closest('.user-menu-dropdown') && !target.closest('.user-avatar-button') && isUserMenuOpen.value) {
         isUserMenuOpen.value = false
     }
 }
 
 const handleResize = () => {
     state.isMobile = window.innerWidth < 768
-    if (state.isMobile && !isCollapsed.value) {
-        isCollapsed.value = true
-        localStorage.setItem('sidebarCollapsed', 'true')
-        emit('toggle', true)
-    }
-    updateMenuPosition()
+    updateMenuPosition() 
 }
 
 onMounted(() => {
     document.addEventListener('click', closeUserMenu)
-    
-    loadSavedState()
-    
-    handleResize()
-    
+    handleResize() // Initial check
     window.addEventListener('resize', handleResize)
 })
 
@@ -108,10 +85,11 @@ onUnmounted(() => {
 <template>
     <aside :class="[
         'h-screen z-40 transition-all duration-300 border-r border-white/10 fixed left-0 top-0',
-        isCollapsed ? 'w-16 sm:w-20' : 'w-64',
+        state.isMobile ? 'w-16' : 'w-64', 
         'bg-gradient-to-b from-black to-black/90 backdrop-blur-lg'
     ]">
-        <div class="flex items-center justify-between h-16 px-4 border-b border-white/10">
+        <div class="flex items-center h-16 px-4 border-b border-white/10"
+            :class="state.isMobile ? 'justify-center' : 'justify-between'">
             <div class="flex items-center">
                 <div
                     class="flex items-center justify-center flex-shrink-0 w-10 h-10 overflow-hidden bg-white rounded-full">
@@ -119,40 +97,31 @@ onUnmounted(() => {
                 </div>
                 <span :class="[
                     'ml-3 font-sans text-xl font-bold tracking-wide text-white transition-opacity duration-300',
-                    isCollapsed ? 'opacity-0 hidden' : 'opacity-100'
+                    state.isMobile ? 'opacity-0 hidden' : 'opacity-100' 
                 ]">PUMA</span>
             </div>
-            <button @click="toggleSidebar"
-                class="flex items-center justify-center w-8 h-8 text-white transition-all duration-200 rounded-full bg-white/10 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="isCollapsed
-                        ? 'M9 5l7 7-7 7'
-                        : 'M15 19l-7-7 7-7'" />
-                </svg>
-            </button>
         </div>
 
         <div :class="[
             'transition-all duration-300 border-b border-white/10',
-            isCollapsed ? 'px-3 py-4' : 'px-4 py-4'
+            state.isMobile ? 'px-2 py-4' : 'px-4 py-4'
         ]">
             <div :class="[
-                'flex items-center user-menu',
-                isCollapsed ? 'justify-center' : 'space-x-3'
+                'flex items-center',
+                state.isMobile ? 'justify-center' : 'space-x-3' 
             ]">
                 <button @click="toggleUserMenu"
-                    class="relative flex items-center justify-center overflow-hidden transition-all duration-300 bg-white rounded-full w-9 h-9 hover:ring-2 hover:ring-white/40 focus:outline-none">
+                    class="relative flex items-center justify-center overflow-hidden transition-all duration-300 bg-white rounded-full user-avatar-button w-9 h-9 hover:ring-2 hover:ring-white/40 focus:outline-none">
                     <img :src="currentUser.avatar" alt="User avatar" class="object-cover w-full h-full rounded-full" />
                 </button>
 
-                <div v-if="!isCollapsed" class="flex flex-col overflow-hidden">
+                <div v-if="!state.isMobile" class="flex flex-col overflow-hidden">
                     <span class="text-sm font-medium text-white truncate">{{ currentUser.name }}</span>
                     <span class="text-xs truncate text-white/70">{{ currentUser.role }}</span>
                 </div>
 
                 <div v-if="isUserMenuOpen"
-                    class="absolute left-0 z-50 w-56 mt-2 overflow-hidden transition-all duration-200 origin-top-left border rounded-lg shadow-lg bg-black/95 border-white/10 backdrop-blur-lg user-menu-dropdown"
+                    class="absolute z-50 w-56 mt-2 overflow-hidden transition-all duration-200 origin-top-left border rounded-lg shadow-lg bg-black/95 border-white/10 backdrop-blur-lg user-menu-dropdown"
                     :style="{ left: state.menuPosition.left, top: state.menuPosition.top }">
                     <div class="px-4 py-3 border-b border-white/10">
                         <p class="text-sm font-medium text-white">{{ currentUser.name }}</p>
@@ -191,24 +160,21 @@ onUnmounted(() => {
             </div>
         </div>
 
-        <nav class="py-2 overflow-y-auto max-h-[calc(100vh-12rem)]">
+        <nav class="py-2 overflow-y-auto max-h-[calc(100vh-11rem)]">
             <div class="px-2 space-y-1">
                 <router-link v-for="(item, index) in navItems" :key="item.name" :to="item.path" :class="[
                     'flex items-center transition-all duration-200 rounded-lg group',
-                    isCollapsed ? 'py-3 px-2 mx-1 justify-center' : 'py-2.5 px-3 mx-1',
+                    state.isMobile ? 'p-3 mx-0.5 justify-center' : 'py-2.5 px-3 mx-1', 
                     activePath === item.path
                         ? 'bg-white text-black font-medium'
                         : 'text-white hover:bg-white/10'
                 ]">
                     <div class="relative flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" :class="[
-                            'transition-all duration-300',
-                            isCollapsed ? 'w-5 h-5' : 'w-5 h-5'
-                        ]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-all duration-300" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="item.icon" />
                         </svg>
-
-                        <span v-if="item.showNumber && !isCollapsed" :class="[
+                        <span v-if="item.showNumber && !state.isMobile" :class="[ 
                             'absolute -right-1.5 -top-1.5 text-xs w-4 h-4 flex items-center justify-center rounded-full transition-colors duration-300',
                             activePath === item.path
                                 ? 'bg-black text-white'
@@ -217,10 +183,9 @@ onUnmounted(() => {
                             {{ index + 1 }}
                         </span>
                     </div>
-
                     <span :class="[
                         'transition-all duration-300 truncate',
-                        isCollapsed ? 'hidden' : 'ml-3 font-medium text-sm'
+                        state.isMobile ? 'hidden' : 'ml-3 font-medium text-sm'
                     ]">
                         {{ item.name }}
                     </span>
@@ -228,25 +193,16 @@ onUnmounted(() => {
             </div>
         </nav>
 
-        <div class="absolute bottom-0 left-0 w-full p-3 border-t border-white/10" v-if="!isCollapsed">
+        <div class="absolute bottom-0 left-0 w-full p-3 border-t border-white/10">
             <button
-                class="flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-black transition-all duration-300 bg-white border-0 rounded-lg hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/30">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                class="flex items-center w-full text-black transition-all duration-300 bg-white border-0 rounded-lg hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/30"
+                :class="state.isMobile ? 'justify-center p-2.5' : 'justify-center px-3 py-2 text-sm font-medium'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" :class="{ 'mr-2': !state.isMobile }" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
-                Logout
-            </button>
-        </div>
-        <div class="absolute bottom-0 left-0 w-full p-3 border-t border-white/10" v-else>
-            <button
-                class="flex items-center justify-center w-full p-2 text-black transition-all duration-300 bg-white rounded-lg hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/30">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
+                <span v-if="!state.isMobile" class="font-medium">Logout</span>
             </button>
         </div>
     </aside>
@@ -279,22 +235,4 @@ aside {
     background: rgba(255, 255, 255, 0.25);
 }
 
-@media (max-width: 768px) {
-    aside {
-        transform: translateX(0);
-        transition: transform 0.3s ease;
-    }
-    
-    aside.closed {
-        transform: translateX(-100%);
-    }
-}
-
-/* Dropdown menu responsive positioning */
-@media (max-width: 640px) {
-    .user-menu-dropdown {
-        left: 4rem !important;
-        right: auto !important;
-    }
-}
 </style>

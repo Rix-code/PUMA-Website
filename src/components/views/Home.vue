@@ -95,7 +95,7 @@ const rotateText = () => {
                 <p class="mt-2 text-lg text-white/80 md:text-xl animate-fadeInUp animate-delay-300">
                     PUMA Informatics is the official student organization for the Informatics Department at President University. We are dedicated to developing students' capabilities in technology and fostering a community of forward-thinking tech enthusiasts who contribute positively to society.
                 </p>
-                <a href="#/cabinet"
+                <a href="/about"
                     class="inline-block px-8 py-3 mt-6 text-black transition-colors bg-white rounded-full hover:bg-gray-100 animate-fadeInUp animate-delay-400">
                     About Us
                 </a>

@@ -41,16 +41,10 @@ const handleSidebarToggle = (collapsed: boolean) => {
     isCollapsed.value = collapsed
 }
 
-const toggleMobileMenu = () => {
-    mobileMenuOpen.value = !mobileMenuOpen.value
-}
 </script>
 <template>
     <div class="flex h-screen bg-gray-100">
         <SideBar @toggle="handleSidebarToggle" />
-
-        <div v-if="mobileMenuOpen" class="fixed inset-0 z-30 bg-black/50 sm:hidden" @click="toggleMobileMenu"></div>
-
         <div :class="[
             'flex-1 transition-all duration-300 overflow-hidden',
             isCollapsed ? 'ml-16 sm:ml-20' : 'ml-16 sm:ml-64'
@@ -58,15 +52,6 @@ const toggleMobileMenu = () => {
             <header
                 class="sticky top-0 z-20 flex items-center justify-between h-16 px-4 border-b sm:px-6 bg-gradient-to-r from-black/90 to-black/80 backdrop-blur-lg border-white/10">
                 <div class="flex items-center">
-                    <button @click="toggleMobileMenu"
-                        class="p-2 mr-2 text-white rounded-lg bg-white/10 hover:bg-white/20 sm:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-
                     <div class="items-center hidden text-sm sm:flex text-white/70">
                         <router-link v-for="(crumb, index) in breadcrumbs" :key="index" :to="crumb.path"
                             class="transition-colors duration-200 hover:text-white">

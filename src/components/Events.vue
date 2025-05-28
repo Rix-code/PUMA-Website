@@ -8,186 +8,212 @@ import AOS from 'aos'
 const windowWidth = ref(0)
 
 const events = [
-  {
-    title: 'Regenetics 2024/2025',
-    date: '1 September 2024',
-    description: 'The PUMA Informatics Regeneration is an event to recruit new members who are enthusiastic and committed to joining the organization.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample1.jpg',
-      '../public/sample2.jpg'
-    ]
-  },
-  {
-    title: 'Unitics',
-    date: '1 December 2024',
-    description: 'Unitics (Unity of Informatics) is organized to welcome new members to PUMA IT. The primary focus is to create an inclusive environment.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample3.jpg',
-      '../public/sample4.jpg'
-    ]
-  },
-  {
-    title: '1st Aformation Midterm',
-    date: '1 October 2024',
-    description: 'First midterm evaluation for new members focusing on organizational knowledge and technical skills development.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample5.jpg',
-      '../public/sample6.jpg'
-    ]
-  },
-  {
-    title: 'PUMA Training',
-    date: '1 October 2024',
-    description: 'Comprehensive training program for members covering technical skills and organizational knowledge.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample7.jpg',
-      '../public/sample8.jpg'
-    ]
-  },
-  {
-    title: 'Brainstormics',
-    date: '1 November 2024',
-    description: 'Collaborative brainstorming session to generate innovative ideas for upcoming projects and events.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample10.jpg'
-    ]
-  },
-  {
-    title: 'Guest Lecture',
-    date: '1 December 2024',
-    description: 'Industry professionals sharing insights and expertise on current trends in information technology.',
-    images: [
-      '.https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample12.jpg'
-    ]
-  },
-  {
-    title: '2nd Aformation Final Exam',
-    date: '1 December 2024',
-    description: 'End-of-semester evaluation assessing progress and knowledge acquisition of new members.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample14.jpg'
-    ]
-  },
-  {
-    title: 'Temu Alumni',
-    date: '1 February 2025',
-    description: 'Networking event connecting current members with alumni to share experiences and career insights.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample16.jpg'
-    ]
-  },
-  {
-    title: '3rd Aformation Midterm',
-    date: '1 February 2025',
-    description: 'Midterm evaluation focusing on project development and leadership skills assessment.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample18.jpg'
-    ]
-  },
-  {
-    title: 'Informatics Connect',
-    date: '1 March 2025',
-    description: 'Industry networking event connecting students with potential employers and industry partners.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample20.jpg'
-    ]
-  },
-  {
-    title: '4th Aformation Final Exam',
-    date: '1 May 2025',
-    description: 'Final comprehensive evaluation of member progress throughout the academic year.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample22.jpg'
-    ]
-  },
-  {
-    title: 'Preschotics Beasiswa',
-    date: '1 May 2025',
-    description: 'Scholarship preparation program helping students apply for prestigious educational opportunities.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample22.jpg'
-    ]
-  },
-  {
-    title: 'Company Visit',
-    date: '1 June 2025',
-    description: 'Organized visits to leading tech companies to observe professional work environments.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample22.jpg'
-    ]
-  },
-  {
-    title: 'Elevate Informatics Festival',
-    date: '1 July 2025',
-    description: 'Annual celebration showcasing student projects and achievements in information technology.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample22.jpg'
-    ]
-  },
-  {
-    title: 'Regenetics',
-    date: '1 August 2025',
-    description: 'Recruitment event for the next academic year welcoming new potential organization members.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample22.jpg'
-    ]
-  },
-  {
-    title: 'Inforuum',
-    date: '1 August 2025',
-    description: 'Open forum discussion addressing current challenges and future directions in informatics.',
-    images: [
-      'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
-      '../public/sample22.jpg'
-    ]
-  }
+    {
+        title: 'Regenetics 2024/2025',
+        date: '1 September 2024',
+        description: 'The PUMA Informatics Regeneration is an event to recruit new members who are enthusiastic and committed to joining the organization.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample1.jpg',
+            '../public/sample2.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'Unitics',
+        date: '1 December 2024',
+        description: 'Unitics (Unity of Informatics) is organized to welcome new members to PUMA IT. The primary focus is to create an inclusive environment.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample3.jpg',
+            '../public/sample4.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: '1st Aformation Midterm',
+        date: '1 October 2024',
+        description: 'First midterm evaluation for new members focusing on organizational knowledge and technical skills development.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample5.jpg',
+            '../public/sample6.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'PUMA Training',
+        date: '1 October 2024',
+        description: 'Comprehensive training program for members covering technical skills and organizational knowledge.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample7.jpg',
+            '../public/sample8.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'Brainstormics',
+        date: '1 November 2024',
+        description: 'Collaborative brainstorming session to generate innovative ideas for upcoming projects and events.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample10.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'Guest Lecture',
+        date: '1 December 2024',
+        description: 'Industry professionals sharing insights and expertise on current trends in information technology.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample12.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: '2nd Aformation Final Exam',
+        date: '1 December 2024',
+        description: 'End-of-semester evaluation assessing progress and knowledge acquisition of new members.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample14.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'Temu Alumni',
+        date: '1 February 2025',
+        description: 'Networking event connecting current members with alumni to share experiences and career insights.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample16.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: '3rd Aformation Midterm',
+        date: '1 February 2025',
+        description: 'Midterm evaluation focusing on project development and leadership skills assessment.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample18.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'Informatics Connect',
+        date: '1 March 2025',
+        description: 'Industry networking event connecting students with potential employers and industry partners.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample20.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: '4th Aformation Final Exam',
+        date: '1 May 2025',
+        description: 'Final comprehensive evaluation of member progress throughout the academic year.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample22.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'Preschotics Beasiswa',
+        date: '1 May 2025',
+        description: 'Scholarship preparation program helping students apply for prestigious educational opportunities.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample22.jpg'
+        ],
+        status: 'completed'
+    },
+    {
+        title: 'Company Visit',
+        date: '1 June 2025',
+        description: 'Organized visits to leading tech companies to observe professional work environments.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample22.jpg'
+        ],
+        status: 'upcoming'
+    },
+    {
+        title: 'Elevate Informatics Festival',
+        date: '1 July 2025',
+        description: 'Annual celebration showcasing student projects and achievements in information technology.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample22.jpg'
+        ],
+        status: 'upcoming'
+    },
+    {
+        title: 'Regenetics',
+        date: '1 August 2025',
+        description: 'Recruitment event for the next academic year welcoming new potential organization members.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample22.jpg'
+        ],
+        status: 'upcoming'
+    },
+    {
+        title: 'Inforuum',
+        date: '1 August 2025',
+        description: 'Open forum discussion addressing current challenges and future directions in informatics.',
+        images: [
+            'https://i.pinimg.com/736x/ff/e1/6c/ffe16ca3153ef85b42f5cfebbd69c758.jpg',
+            '../public/sample22.jpg'
+        ],
+        status: 'upcoming'
+    }
 ]
+
+// NEW: Computed property to filter for completed events
+const completedEvents = computed(() => {
+  return events.filter(event => event.status === 'completed')
+})
 
 const itemsToShow = computed(() => {
   if (windowWidth.value < 640) {
-    return 1 
+    return 1
   } else if (windowWidth.value < 1024) {
-    return 2 
+    return 2
   } else {
-    return 2.5 
+    return 2.5
   }
 })
 
 const currentSlide = ref(0)
 const modalVisible = ref(false)
-const selectedEvent = ref(events[0])
+// Initialize selectedEvent with the first completed event, or null if none exist
+const selectedEvent = ref(completedEvents.value.length > 0 ? completedEvents.value[0] : null)
 const isLoaded = ref(false)
 const patterns = ref<{ x: number; y: number; size: number; rotation: number; opacity: number; }[]>([])
 const backgroundCircles = ref<{ x: number; y: number; size: number; color: string; opacity: number; blur: number; }[]>([])
 
-const handleSlideChange = (index: number) => {
-  currentSlide.value = index
+const mainCarouselAutoplaySpeed = ref(5000);
+
+const handleSlideChange = (data: { currentSlideIndex: number }) => {
+  currentSlide.value = data.currentSlideIndex
 }
 
 const openModal = (event: any) => {
   selectedEvent.value = event
   modalVisible.value = true
   document.body.style.overflow = 'hidden'
+  mainCarouselAutoplaySpeed.value = 0;
 }
 
 const closeModal = () => {
   modalVisible.value = false
   document.body.style.overflow = 'auto'
+  mainCarouselAutoplaySpeed.value = 3000;
 }
 
 const generatePatterns = () => {
@@ -228,16 +254,15 @@ const updateWindowWidth = () => {
 
 onMounted(() => {
   windowWidth.value = window.innerWidth
-  
   window.addEventListener('resize', updateWindowWidth)
-  
+
   setTimeout(() => {
     isLoaded.value = true
   }, 300)
-  
+
   generatePatterns()
   generateBackgroundCircles()
-  
+
   AOS.init({
     duration: 800,
     easing: 'ease-in-out',
@@ -287,9 +312,14 @@ onMounted(() => {
       </div>
 
       <div data-aos="fade-up" class="mx-auto max-w-8xl">
-        <Carousel :items-to-show="itemsToShow" :wrap-around="true" :transition="600" @slideChange="handleSlideChange"
-          class="event-carousel">
-          <Slide v-for="(event, index) in events" :key="index" class="carousel__item">
+        <Carousel
+          :items-to-show="itemsToShow"
+          :wrap-around="true"
+          :transition="600"
+          :autoplay="mainCarouselAutoplaySpeed" @slide-change="handleSlideChange"
+          class="event-carousel"
+        >
+          <Slide v-for="(event, index) in completedEvents" :key="index" class="carousel__item">
             <div class="h-full mx-4 perspective">
               <div
                 class="overflow-hidden transition-all duration-500 transform bg-white shadow-lg rounded-xl backface-visibility-hidden event-card"
@@ -347,7 +377,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div v-if="modalVisible"
+    <div v-if="modalVisible && selectedEvent"
       class="fixed inset-0 z-50 flex items-center justify-center transition-all duration-300 bg-black/30 backdrop-blur-sm"
       @click.self="closeModal">
       <div
@@ -376,17 +406,13 @@ onMounted(() => {
           </div>
 
           <div class="overflow-hidden shadow-md rounded-xl">
-            <Carousel :items-to-show="1" :wrap-around="true" :transition="800" class="gallery-carousel">
+            <Carousel :items-to-show="1" :wrap-around="true" :transition="800" :autoplay="4000" class="gallery-carousel">
               <Slide v-for="(image, i) in selectedEvent.images" :key="i" class="carousel__item">
                 <div class="relative overflow-hidden rounded-xl">
                   <img :src="image" :alt="`${selectedEvent.title} Image ${i + 1}`"
                     class="object-cover w-full transition-transform duration-700 rounded-lg hover:scale-105 modal-image" />
-
-                  <div class="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-black/40 to-transparent">
-                  </div>
-
-                  <div
-                    class="absolute px-3 py-1 text-xs font-medium text-gray-800 rounded-full bottom-4 right-4 bg-white/70 backdrop-blur-sm">
+                  <div class="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-black/40 to-transparent"></div>
+                  <div class="absolute px-3 py-1 text-xs font-medium text-gray-800 rounded-full bottom-4 right-4 bg-white/70 backdrop-blur-sm">
                     {{ i + 1 }}/{{ selectedEvent.images.length }}
                   </div>
                 </div>
@@ -403,6 +429,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* ... (your styles remain the same) ... */
 .perspective {
   perspective: 1000px;
 }
@@ -436,7 +463,7 @@ onMounted(() => {
 }
 
 .image-container {
-  height: 340px; 
+  height: 340px;
   overflow: hidden;
 }
 
@@ -456,13 +483,14 @@ onMounted(() => {
   flex: 1;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
   -webkit-box-orient: vertical;
-  margin-bottom: 8px;
+  margin-bottom: 8px; /* Add some space before the button */
 }
 
+
 .modal-image {
-  height: 400px;
+  height: 400px; /* Or adjust as needed */
   width: 100%;
   object-fit: cover;
 }
@@ -477,7 +505,7 @@ onMounted(() => {
   }
 
   .event-carousel :deep(.carousel__slide) {
-    padding: 1.5rem;
+    padding: 1.5rem; /* Adjust padding for larger screens */
   }
 }
 
