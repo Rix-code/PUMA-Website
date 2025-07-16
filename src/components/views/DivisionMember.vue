@@ -39,7 +39,7 @@
       { name: 'TECHNOPRENEUR', title: 'Technopreneur', image: '/PUMA-Website/division/Technoprenet.JPG', description: 'Drives entrepreneurship in technology and innovation, guiding members in developing tech-based business ideas.' }
     ];
 
-    const cabinets = ['Kaustav', 'Kopi'];
+    const cabinets = ['Kaustav', 'Fragnatious'];
 
     const generateMembers = () => {
       const membersList = [
@@ -871,30 +871,30 @@
         },
         {
           "id": 60,
-          "name": "Kopi Member 1 BOD",
+          "name": "Fragnatious Member 1 BOD",
           "email": "kopi1@example.com",
           "position": "Chairperson",
-          "cabinet": "Kopi",
+          "cabinet": "Fragnatious",
           "batch": "2023",
           "division": "BOD",
           "avatar": "/PUMA-Website/avatar2.png",
           "instagram": "https://instagram.com/",
           "linkedin": "https://linkedin.com/in/",
-          "personalDescription": "Kopi Cabinet Leader",
+          "personalDescription": "Fragnatious Cabinet Leader",
           "status": "Active"
         },
         {
           "id": 61,
-          "name": "Kopi Member 2 RNT",
+          "name": "Fragnatious Member 2 RNT",
           "email": "kopi2@example.com",
           "position": "Head of RNT",
-          "cabinet": "Kopi",
+          "cabinet": "Fragnatious",
           "batch": "2023",
           "division": "RNT",
           "avatar": "/PUMA-Website/avatar2.png",
           "instagram": "https://instagram.com/",
           "linkedin": "https://linkedin.com/in/",
-          "personalDescription": "Kopi RNT Head",
+          "personalDescription": "Fragnatious RNT Head",
           "status": "Active"
         }
       ];
